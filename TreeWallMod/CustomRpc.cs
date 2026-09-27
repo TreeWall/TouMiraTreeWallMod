@@ -16,6 +16,7 @@ namespace TreeWallMod
         AddPlayerSyringeInject,
         RemovePlayerSyringeInject,
         MarksmanSuppressedComplete,
-		MarksmanWarp
+		MarksmanWarp,
+		WEEEStrech
     }
 }

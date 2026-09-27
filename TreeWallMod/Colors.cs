@@ -19,5 +19,6 @@ namespace TreeWallMod
 
 		// Modifier Colors
 		public static Color HeadlessModifier => new Color32(255, 0, 0, 255);
+		public static Color WEEEModifer => new Color32(250, 94, 24, 255);
 	}
 }

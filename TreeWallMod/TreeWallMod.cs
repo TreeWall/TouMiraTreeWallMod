@@ -48,9 +48,7 @@ namespace TreeWallMod
             ReactorCredits.Register<TreeWallModPlugin>(ReactorCredits.AlwaysShow);
 
             if (IsDevBuild) 
-            {    
-                ClassInjector.RegisterTypeInIl2Cpp<DebuggingWindow>();
-
+            {
                 GameObject guiObject = new GameObject("ModDebugGuiObject");
                 UnityEngine.Object.DontDestroyOnLoad(guiObject);
                 guiObject.hideFlags = HideFlags.HideAndDontSave;
