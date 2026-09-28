@@ -1,10 +1,9 @@
 ﻿using AmongUs.GameOptions;
 using HarmonyLib;
-using MiraAPI.Events;
+using Il2CppInterop.Runtime.Attributes;
 using MiraAPI.GameOptions;
 using MiraAPI.Hud;
 using MiraAPI.Modifiers;
-using MiraAPI.Networking;
 using MiraAPI.Patches.Stubs;
 using MiraAPI.Roles;
 using MiraAPI.Translation;
@@ -12,40 +11,25 @@ using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
 using Reactor.Networking.Attributes;
 using Reactor.Utilities;
-using Rewired.Utils.Classes.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using TownOfUs;
-using TownOfUs.Buttons;
-using TownOfUs.Buttons.Crewmate;
-using TownOfUs.Buttons.Impostor;
-using TownOfUs.Events.Crewmate;
-using TownOfUs.Events.TouEvents;
-using TownOfUs.Extensions;
 using TownOfUs.Interfaces;
 using TownOfUs.Modifiers;
 using TownOfUs.Modifiers.Crewmate;
 using TownOfUs.Modifiers.Game.Assailant;
 using TownOfUs.Modifiers.Game.Universal;
-using TownOfUs.Modifiers.Impostor;
-using TownOfUs.Modifiers.Neutral;
 using TownOfUs.Modules;
 using TownOfUs.Modules.Components;
-using TownOfUs.Modules.Wiki;
 using TownOfUs.Networking;
-using TownOfUs.Options.Roles.Neutral;
 using TownOfUs.Roles;
 using TownOfUs.Roles.Crewmate;
 using TownOfUs.Roles.Neutral;
 using TreeWallMod.Assets;
 using TreeWallMod.Buttons.Neutral.Marksman;
-using TreeWallMod.Events.Crewmate;
-using TreeWallMod.Modifiers.Crewmate;
 using TreeWallMod.Modifiers.Neutral;
-using TreeWallMod.Modules;
 using TreeWallMod.Options.Roles.Neutral;
 using UnityEngine;
 
@@ -62,7 +46,51 @@ namespace TreeWallMod.Roles.Neutral
 		public RoleAlignment RoleAlignment => RoleAlignment.NeutralKilling;
 		public DoomableType DoomHintType => DoomableType.Insight;
 
-		public CustomRoleConfiguration Configuration => new(this)
+        public string GetAdvancedDescription()
+        {
+            return
+                MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}.WikiDescription") +
+                MiscUtils.AppendOptionsText(GetType());
+        }
+
+        [HideFromIl2Cpp]
+        public List<CustomButtonWikiDescription> Abilities
+        {
+            get
+            {
+                var abilities = new List<CustomButtonWikiDescription>
+				{
+					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Discover", "Discover"),
+						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Discover.WikiDescription"),
+						NeutAssets.MarksmanDiscover),
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}SharpenedBlade", "SharpenedBlade"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}SharpenedBlade.WikiDescription"),
+                        NeutAssets.MarksmanSharpenedBlade),
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Smokebomb", "Smokebomb"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Smokebomb.WikiDescription"),
+                        NeutAssets.MarksmanSmokeBomb),
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Warp", "Warp"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Warp.WikiDescription"),
+                        NeutAssets.MarksmanWarp),
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Vanish", "Vanish"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Vanish.WikiDescription"),
+                        TouImpAssets.SwoopSprite),
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dismantle", "Dismantle"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dismantle.WikiDescription"),
+                        NeutAssets.MarksmanDismantle),
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Supressor", "Supressor"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Supressor.WikiDescription"),
+                        NeutAssets.MarksmanSuppressed),
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover", "Dualscover"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover.WikiDescription"),
+                        NeutAssets.MarksmanDiscover),
+                };
+
+                return abilities;
+            }
+        }
+
+        public CustomRoleConfiguration Configuration => new(this)
 		{
 			MaxRoleCount = 1,
 			IconTmp = TmpSpriteUtils.CreateSpriteAsset(RoleIcons.Marksman.LoadAsset(), "TreeWallMod.Roles.Neutral.Marksman", 1.45f),
@@ -548,7 +576,7 @@ namespace TreeWallMod.Roles.Neutral
 					{
 						var notifDeath1 = Helpers.CreateAndShowNotification(
 							"That was an incorrect Guess NOW DIE",
-							Color.red, new Vector3(0f, 1f, -20f), spr: RoleIcons.Marksman.LoadAsset());
+							Color.red, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanDiscover.LoadAsset());
 
 						notifDeath1.AdjustNotification();
 
@@ -561,7 +589,7 @@ namespace TreeWallMod.Roles.Neutral
 
 					var notif2 = Helpers.CreateAndShowNotification(
 						$"That was an incorrect Guess, Incorrect Guesses Left: {(opts.MisguessAvailable ? 1 : 0) - IncorrectGuesses}",
-						Color.white, new Vector3(0f, 1f, -20f), spr: RoleIcons.Marksman.LoadAsset());
+						Color.white, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanDiscover.LoadAsset());
 
 					notif2.AdjustNotification();
 
@@ -695,7 +723,7 @@ namespace TreeWallMod.Roles.Neutral
 				{
 					var notif1 = Helpers.CreateAndShowNotification(
 						$"Dualscover was Unlocked! You can now use Discover twice.",
-						Color.white, new Vector3(0f, 1f, -20f), spr: RoleIcons.Marksman.LoadAsset());
+						Color.white, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanDiscover.LoadAsset());
 
 					notif1.AdjustNotification();
 

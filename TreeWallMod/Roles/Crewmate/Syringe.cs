@@ -4,6 +4,7 @@ using MiraAPI.Modifiers;
 using MiraAPI.Patches.Stubs;
 using MiraAPI.Roles;
 using MiraAPI.Translation;
+using MiraAPI.Utilities.Assets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,6 @@ namespace TreeWallMod.Roles.Crewmate
 {
 	public sealed class SyringeRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable, ILoyalCrewmate
 	{
-        //public string LocaleKey => "Syringe";
-        //      public string RoleName => MiraLocaleManager.Get($"TreeWallMod{LocaleKey}");
-        //      public string RoleDescription => MiraLocaleManager.GetParsed($"TreeWallMod{LocaleKey}IntroBlurb", [], string.Empty);
-        //      public string RoleLongDescription => MiraLocaleManager.GetParsed($"TreeWallMod{LocaleKey}TabDescription", [], string.Empty);
-
         public string IdPart => "Syringe";
 		string ICustomRole.IdPrefix => "TreeWallMod.Role";
 
@@ -66,8 +62,10 @@ namespace TreeWallMod.Roles.Crewmate
 
 		public CustomRoleConfiguration Configuration => new(this)
 		{
-			Icon = RoleIcons.Syringe
-		};
+            IconTmp = TmpSpriteUtils.CreateSpriteAsset(RoleIcons.Syringe.LoadAsset(), "TreeWallMod.Roles.Crewmate.Syringe", 1.45f),
+            Icon = RoleIcons.Syringe,
+            OptionsScreenshot = TouBanners.CrewmateRoleBanner,
+        };
 
 		public override void OnDeath(DeathReason reason)
 		{

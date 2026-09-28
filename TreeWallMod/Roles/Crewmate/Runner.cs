@@ -1,5 +1,8 @@
 using AmongUs.GameOptions;
+using Il2CppInterop.Runtime.Attributes;
 using MiraAPI.Roles;
+using MiraAPI.Translation;
+using MiraAPI.Utilities.Assets;
 using Reactor.Networking.Attributes;
 using System;
 using System.Collections.Generic;
@@ -24,7 +27,30 @@ namespace TreeWallMod.Roles.Crewmate
 		public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
 		public DoomableType DoomHintType => DoomableType.Trickster;
 
-		public float SpeedMultiplier { get; set; } = 1f;
+        public string GetAdvancedDescription()
+        {
+            return
+                MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}.WikiDescription") +
+                MiscUtils.AppendOptionsText(GetType());
+        }
+
+        [HideFromIl2Cpp]
+        public List<CustomButtonWikiDescription> Abilities
+        {
+            get
+            {
+                var abilities = new List<CustomButtonWikiDescription>
+                {
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Caffeine", "Caffeine"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Caffeine.WikiDescription"),
+                        CrewAssets.RunnerCaffeineSprite),
+                };
+
+                return abilities;
+            }
+        }
+
+        public float SpeedMultiplier { get; set; } = 1f;
 		public bool SpeedActive { get; set; } = false;
 
 		const float RPC_TIME_PERIOD = 1f;
@@ -36,10 +62,12 @@ namespace TreeWallMod.Roles.Crewmate
 
 		public List<RunnerMoveData> RunnerMoves { get; set; } = new();
 
-		public CustomRoleConfiguration Configuration => new(this)
-		{
-			Icon = RoleIcons.Runner
-		};
+        public CustomRoleConfiguration Configuration => new(this)
+        {
+            IconTmp = TmpSpriteUtils.CreateSpriteAsset(RoleIcons.Runner.LoadAsset(), "TreeWallMod.Roles.Crewmate.Runner", 1.45f),
+            Icon = RoleIcons.Runner,
+            OptionsScreenshot = TouBanners.CrewmateRoleBanner,
+        };
 
         public void FixedUpdate()
 		{

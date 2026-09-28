@@ -52,13 +52,13 @@ namespace TreeWallMod.Options.Roles.Crewmate
 			"Minimum Crewmate required for injected Crewmate to be turned to Traitor",
 			4, 0, 15, 1, MiraNumberSuffixes.None);
 
-		[ModdedEnumOption("After syringe injected crew fails to turn Traitor", typeof(SyringeTraitorFail))]
-		public SyringeTraitorFail syringeTraitorFail { get; set; } = SyringeTraitorFail.Both_Syringe_and_Target_Die;
+		[ModdedEnumOption("After syringe injected crew fails to turn Traitor", typeof(SyringeTraitorFail), ["Nothing Happens", "Both Syringe And Target Die"])]
+		public SyringeTraitorFail syringeTraitorFail { get; set; } = SyringeTraitorFail.BothSyringeAndTargetDie;
     }
 
 	public enum SyringeTraitorFail
 	{
-		Nothing_Happens,
-		Both_Syringe_and_Target_Die
+		NothingHappens,
+		BothSyringeAndTargetDie
 	}
 }

@@ -1,4 +1,7 @@
-﻿using MiraAPI.Roles;
+﻿using Il2CppInterop.Runtime.Attributes;
+using MiraAPI.Roles;
+using MiraAPI.Translation;
+using MiraAPI.Utilities.Assets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +27,37 @@ namespace TreeWallMod.Roles.Crewmate
 		float elapsed = 0f;
 		float totalDeltaTime;
 
-		public CustomRoleConfiguration Configuration => new(this)
-		{
-			Icon = RoleIcons.Psychic
-		};
+        public string GetAdvancedDescription()
+        {
+            return
+                MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}.WikiDescription") +
+                MiscUtils.AppendOptionsText(GetType());
+        }
 
-		public void FixedUpdate()
+        [HideFromIl2Cpp]
+        public List<CustomButtonWikiDescription> Abilities
+        {
+            get
+            {
+                var abilities = new List<CustomButtonWikiDescription>
+				{
+					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}GuessKiller", "Guess Killer"),
+						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}GuessKiller.WikiDescription"),
+						CrewAssets.PsychicKillGuessSprite),
+				};
+
+                return abilities;
+            }
+        }
+
+        public CustomRoleConfiguration Configuration => new(this)
+        {
+            IconTmp = TmpSpriteUtils.CreateSpriteAsset(RoleIcons.Psychic.LoadAsset(), "TreeWallMod.Roles.Crewmate.Psychic", 1.45f),
+            Icon = RoleIcons.Psychic,
+            OptionsScreenshot = TouBanners.CrewmateRoleBanner,
+        };
+
+        public void FixedUpdate()
 		{
 			if (Player == null || !Player.AmOwner)
 			{

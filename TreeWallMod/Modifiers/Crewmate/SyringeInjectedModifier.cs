@@ -85,7 +85,7 @@ namespace TreeWallMod.Modifiers.Crewmate
 					{
 						if (AliveCrew < OptionGroupSingleton<SyringeOptions>.Instance.MinCrewForTraitor)
 						{
-							if (OptionGroupSingleton<SyringeOptions>.Instance.syringeTraitorFail == SyringeTraitorFail.Both_Syringe_and_Target_Die)
+							if (OptionGroupSingleton<SyringeOptions>.Instance.syringeTraitorFail == SyringeTraitorFail.BothSyringeAndTargetDie)
 							{
 								Player.RpcSpecialMurder(Player, causeOfDeath: "SyringeMisCured");
 								SyringeItems.Last().Syringe.RpcSpecialMurder(SyringeItems.Last().Syringe, causeOfDeath: "SyringeSued");

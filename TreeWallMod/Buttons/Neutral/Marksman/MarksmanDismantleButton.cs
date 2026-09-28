@@ -43,8 +43,9 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
 		public override bool Enabled(RoleBehaviour? role)
 		{
 			var marksman = PlayerControl.LocalPlayer.GetRole<MarksmanRole>()!;
+			var alivePlayers = PlayerControl.AllPlayerControls.ToArray().Count(x => !x.HasDied());
 
-			return base.Enabled(role) && marksman.UnlockedAbilities.Contains(MarksmanAbility.Dismantle);
+            return base.Enabled(role) && marksman.UnlockedAbilities.Contains(MarksmanAbility.Dismantle) && alivePlayers > 5;
 		}
 
 		protected override void OnClick()
@@ -62,7 +63,7 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
 
             var notif1 = Helpers.CreateAndShowNotification(
                 $"Dismantled {finalTarget.name}",
-                Color.white, new Vector3(0f, 1f, -20f), spr: Assets.RoleIcons.Marksman.LoadAsset());
+                Color.white, new Vector3(0f, 1f, -20f), spr: RoleIcons.Marksman.LoadAsset());
             notif1.AdjustNotification();
 
             finalTarget.RpcAddModifier<MarksmanDismantledModifier>(PlayerControl.LocalPlayer);
