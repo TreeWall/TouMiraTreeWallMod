@@ -10,13 +10,14 @@ All the roles I wanted to implement for v1 have been implemented, I just need to
 
 ~~-Rework the code for Headless~~
 
+~~-Polish Marksman~~
 
-
-\-Polish Marksman
-
-\-rework smokebomb for marksman
+~~-rework smokebomb for marksman~~
 
 
 
-\-New Assets for Psychic, Runner, Headless
+\-Add description for roles and modifiers
+
+\-New Assets for Psychic, Runner, Headless, WEEE
+
 
