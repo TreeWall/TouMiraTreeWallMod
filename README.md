@@ -14,10 +14,9 @@ All the roles I wanted to implement for v1 have been implemented, I just need to
 
 ~~-rework smokebomb for marksman~~
 
+~~-Add description for roles and modifiers~~
 
 
-\-Add description for roles and modifiers
 
 \-New Assets for Psychic, Runner, Headless, WEEE
-
 
