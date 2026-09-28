@@ -48,8 +48,6 @@ using TreeWallMod.Modifiers.Neutral;
 using TreeWallMod.Modules;
 using TreeWallMod.Options.Roles.Neutral;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using static UnityEngine.GraphicsBuffer;
 
 namespace TreeWallMod.Roles.Neutral
 {
@@ -85,7 +83,21 @@ namespace TreeWallMod.Roles.Neutral
 			orCreateTask.name = "NeutralRoleText";
 		}
 
-		public readonly List<MarksmanAbility> LockedAbilities   = Enum.GetValues<MarksmanAbility>().ToList();
+        public bool HasImpostorVision => true;
+
+        public bool WinConditionMet()
+        {
+            var marksmanCount = CustomRoleUtils.GetActiveRolesOfType<MarksmanRole>().Count(x => !x.Player.HasDied());
+
+            if (MiscUtils.KillersAliveCount > marksmanCount || MiscUtils.KillersAliveCount == 0)
+            {
+                return false;
+            }
+
+            return marksmanCount >= MiscUtils.GetImpactfulLivingPlayers().Count - marksmanCount;
+        }
+
+        public readonly List<MarksmanAbility> LockedAbilities   = Enum.GetValues<MarksmanAbility>().ToList();
 		public readonly List<MarksmanAbility> UnlockedAbilities = new();
 
 		public MarksmanWarpState WarpMarking { get; set; } = MarksmanWarpState.Marking;
@@ -112,13 +124,13 @@ namespace TreeWallMod.Roles.Neutral
 					HudManager.Instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Colors.Marksman);
 				}
 
-				//AddAbility(Player, MarksmanAbility.SharpenedBlade);
-				//AddAbility(Player, MarksmanAbility.SmokeBomb);
-				//AddAbility(Player, MarksmanAbility.Warp);
-				//AddAbility(Player, MarksmanAbility.Vanish);
-				//AddAbility(Player, MarksmanAbility.Dismantle);
-				//AddAbility(Player, MarksmanAbility.Supressor);
-				//AddAbility(Player, MarksmanAbility.Dualscover);
+				AddAbility(Player, MarksmanAbility.SharpenedBlade);
+				AddAbility(Player, MarksmanAbility.SmokeBomb);
+				AddAbility(Player, MarksmanAbility.Warp);
+				AddAbility(Player, MarksmanAbility.Vanish);
+				AddAbility(Player, MarksmanAbility.Dismantle);
+				AddAbility(Player, MarksmanAbility.Supressor);
+				AddAbility(Player, MarksmanAbility.Dualscover);
 			}
 		}
 
@@ -134,7 +146,23 @@ namespace TreeWallMod.Roles.Neutral
 			}
 		}
 
-		public void FixedUpdate()
+        public override bool DidWin(GameOverReason gameOverReason)
+        {
+            return WinConditionMet();
+        }
+
+        public override bool CanUse(IUsable usable)
+        {
+            if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))
+            {
+                return false;
+            }
+
+            var console = usable.TryCast<Console>()!;
+            return console == null || console.AllowImpostor;
+        }
+
+        public void FixedUpdate()
 		{
 			if (PlayerControl.LocalPlayer == null || !PlayerControl.LocalPlayer.AmOwner)
 			{
