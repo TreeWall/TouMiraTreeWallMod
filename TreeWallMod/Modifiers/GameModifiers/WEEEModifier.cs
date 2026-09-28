@@ -1,5 +1,7 @@
 ﻿using MiraAPI.GameOptions;
 using MiraAPI.Modifiers;
+using MiraAPI.Translation;
+using MiraAPI.Utilities.Assets;
 using Reactor.Networking;
 using Reactor.Networking.Attributes;
 using Reactor.Utilities;
@@ -9,38 +11,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TownOfUs.Modifiers;
 using TownOfUs.Modifiers.Game;
 using TreeWallMod.Modules;
 using TreeWallMod.Options.Modifiers;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.UIElements.Experimental;
-using static UnityEngine.UIElements.Columns;
 
 namespace TreeWallMod.Modifiers.GameModifiers
 {
 	public sealed class WEEEModifier : UniversalGameModifier, IWikiDiscoverable
 	{
-		public override string ModifierName => "WEEE";
-		public override bool ShowInFreeplay => true;
-		public override Color FreeplayFileColor => Colors.WEEEModifer;
+        public override ModifierUiConfiguration Configuration => new(
+        Colors.WEEEModifer,
+        TmpSpriteUtils.CreateSpriteAsset(TouModifierIcons.Shy.LoadAsset(),
+            "TreeWallMod.Modifier.Universal.WEEE", 1.45f));
+        public override string IdPart => "WEEE";
+        public override string ModifierName => "WEEE";
+        public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Shy;
+
+        public override ModifierFaction FactionType => ModifierFaction.UniversalVisibility;
+        public override Color FreeplayFileColor => Colors.WEEEModifer;
 
 		public GameObject? body { get; set; }
 		public GameObject? cosmetics { get; set; }
 
 		private List<WEEEStrechEnum> randomBucket = new();
 
-		public override string GetDescription()
-		{
-			return "STRECH when you want to :D";
-		}
+        public override string GetDescription()
+        {
+            return MiraLocaleManager.Get($"TreeWallMod.Modifier.{IdPart}.TabDescription");
+        }
 
-		public string GetAdvancedDescription()
-		{
-			return "You STRECH. Thats it, thats the description";
-		}
+        public string GetAdvancedDescription()
+        {
+            return MiraLocaleManager.Get($"TreeWallMod.Modifier.{IdPart}.WikiDescription");
+        }
 
-		public override int GetAmountPerGame()
+        public override int GetAmountPerGame()
 		{
 			return (int)OptionGroupSingleton<TWUniversalModifierOptions>.Instance.WEEEAmount;
 		}

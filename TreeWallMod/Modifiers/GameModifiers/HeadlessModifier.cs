@@ -2,13 +2,17 @@ using MiraAPI.GameOptions;
 using MiraAPI.Hud;
 using MiraAPI.Modifiers;
 using MiraAPI.Patches.Stubs;
+using MiraAPI.Translation;
 using MiraAPI.Utilities;
+using MiraAPI.Utilities.Assets;
 using Reactor.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TownOfUs;
 using TownOfUs.Buttons;
 using TownOfUs.Events;
+using TownOfUs.Modifiers;
 using TownOfUs.Modifiers.Game;
 using TownOfUs.Patches;
 using TownOfUs.Utilities.Appearances;
@@ -17,15 +21,21 @@ using TreeWallMod.Modules;
 using TreeWallMod.Options.Modifiers;
 using UnityEngine;
 using UnityEngine.UI;
-using static TreeWallMod.Modules.TreeWallModRpcs;
 
 namespace TreeWallMod.Modifiers.GameModifers
 {
 	public sealed class HeadlessModifier : UniversalGameModifier, IWikiDiscoverable
 	{
-		public override string ModifierName => "Headless";
-		public override bool ShowInFreeplay => true;
-		public override Color FreeplayFileColor => Colors.HeadlessModifier;
+        public override ModifierUiConfiguration Configuration => new(
+        Colors.HeadlessModifier,
+        TmpSpriteUtils.CreateSpriteAsset(TouModifierIcons.Shy.LoadAsset(),
+            "TreeWallMod.Modifier.Universal.Headless", 1.45f));
+        public override string IdPart => "Headless";
+        public override string ModifierName => "Headless";
+        public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Shy;
+
+        public override ModifierFaction FactionType => ModifierFaction.UniversalVisibility;
+        public override Color FreeplayFileColor => Colors.HeadlessModifier;
 
 		public PlayerControl? Killer { get; set; }
 		public bool Dead { get; set; } = false;
@@ -36,13 +46,13 @@ namespace TreeWallMod.Modifiers.GameModifers
 
 		public override string GetDescription()
 		{
-			return "Turn into a headless torso when you die";
-		}
+            return MiraLocaleManager.Get($"TreeWallMod.Modifier.{IdPart}.TabDescription");
+        }
 
 		public string GetAdvancedDescription()
 		{
-			return "When someone kills you, instead of dying completely, you can move in a headless state and complete tasks (or kill people hehe)";
-		}
+			return MiraLocaleManager.Get($"TreeWallMod.Modifier.{IdPart}.WikiDescription");
+        }
 
 		public override int GetAmountPerGame()
 		{

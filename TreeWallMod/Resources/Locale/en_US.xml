@@ -69,5 +69,13 @@
 	<string name="TreeWallMod.Role.MarksmanSupressor.WikiDescription">When it guesses successfully, it's target does not go under the meeting death animation and instantly skip. Their vote will not count</string>
 	<string name="TreeWallMod.Role.MarksmanDualscover">Dualscover</string>
 	<string name="TreeWallMod.Role.MarksmanDualscover.WikiDescription">Can Discover 2 players in one round</string>
+	
+	<!-- Headless Modifier -->
+	<string name="TreeWallMod.Modifier.Headless.TabDescription">You turn into a headless body after dying. Lasts for 1 round after death</string>
+	<string name="TreeWallMod.Modifier.Headless.WikiDescription">When someone kills you, instead of dying completely, you can move in a headless state and complete tasks (or kill players)</string>
+
+	<!-- WEEE Modifier -->
+	<string name="TreeWallMod.Modifier.WEEE.TabDescription">STRECH when you want to :D</string>
+	<string name="TreeWallMod.Modifier.WEEE.WikiDescription">You STRECH. Thats it, thats the description</string>
 
 </resources>
