@@ -58,15 +58,16 @@ namespace TreeWallMod.Roles.Neutral
         {
             get
             {
+				// heheheehehheehe
                 var abilities = new List<CustomButtonWikiDescription>
 				{
 					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Discover", "Discover"),
 						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Discover.WikiDescription"),
 						NeutAssets.MarksmanDiscover),
-                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}SharpenedBlade", "SharpenedBlade"),
-                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}SharpenedBlade.WikiDescription"),
-                        NeutAssets.MarksmanSharpenedBlade),
-                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Smokebomb", "Smokebomb"),
+					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}SharpenedBlade", "SharpenedBlade"),
+						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}SharpenedBlade.WikiDescription"),
+						NeutAssets.MarksmanSharpenedBlade),
+					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Smokebomb", "Smokebomb"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Smokebomb.WikiDescription"),
                         NeutAssets.MarksmanSmokeBomb),
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Warp", "Warp"),
@@ -78,9 +79,18 @@ namespace TreeWallMod.Roles.Neutral
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dismantle", "Dismantle"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dismantle.WikiDescription"),
                         NeutAssets.MarksmanDismantle),
-                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Supressor", "Supressor"),
-                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Supressor.WikiDescription"),
-                        NeutAssets.MarksmanSuppressed),
+					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Supressor", "Supressor"),
+						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Supressor.WikiDescription"),
+						NeutAssets.MarksmanSuppressed),
+					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover", "Dualscover"),
+						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover.WikiDescription"),
+						NeutAssets.MarksmanDiscover),
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover", "Dualscover"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover.WikiDescription"),
+                        NeutAssets.MarksmanDiscover),
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover", "Dualscover"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover.WikiDescription"),
+                        NeutAssets.MarksmanDiscover),
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover", "Dualscover"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover.WikiDescription"),
                         NeutAssets.MarksmanDiscover),
@@ -152,13 +162,13 @@ namespace TreeWallMod.Roles.Neutral
 					HudManager.Instance.ImpostorVentButton.buttonLabelText.SetOutlineColor(Colors.Marksman);
 				}
 
-				AddAbility(Player, MarksmanAbility.SharpenedBlade);
-				AddAbility(Player, MarksmanAbility.SmokeBomb);
-				AddAbility(Player, MarksmanAbility.Warp);
-				AddAbility(Player, MarksmanAbility.Vanish);
-				AddAbility(Player, MarksmanAbility.Dismantle);
-				AddAbility(Player, MarksmanAbility.Supressor);
-				AddAbility(Player, MarksmanAbility.Dualscover);
+				//AddAbility(Player, MarksmanAbility.SharpenedBlade);
+				//AddAbility(Player, MarksmanAbility.SmokeBomb);
+				//AddAbility(Player, MarksmanAbility.Warp);
+				//AddAbility(Player, MarksmanAbility.Vanish);
+				//AddAbility(Player, MarksmanAbility.Dismantle);
+				//AddAbility(Player, MarksmanAbility.Supressor);
+				//AddAbility(Player, MarksmanAbility.Dualscover);
 			}
 		}
 
