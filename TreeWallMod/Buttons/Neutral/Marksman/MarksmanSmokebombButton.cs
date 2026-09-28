@@ -4,6 +4,7 @@ using MiraAPI.Modifiers;
 using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
 using System.Collections.Generic;
+using System.Linq;
 using TownOfUs;
 using TownOfUs.Buttons;
 using TownOfUs.Modifiers.Impostor;
@@ -13,6 +14,7 @@ using TreeWallMod.Modifiers.Neutral;
 using TreeWallMod.Options.Roles.Neutral;
 using TreeWallMod.Roles.Neutral;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace TreeWallMod.Buttons.Neutral.Marksman
 {
@@ -39,19 +41,31 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
 
         protected override void OnClick()
         {
-            var smokedPlayers = Helpers.GetClosestPlayers(PlayerControl.LocalPlayer, OptionGroupSingleton<MarksmanOptions>.Instance.SmokebombRadius * ShipStatus.Instance.MaxLightRadius);
-
-            foreach (var player in smokedPlayers)
+            if (OptionGroupSingleton<MarksmanOptions>.Instance.SmokebombMove)
             {
-                player.RpcAddModifier<MarksmanSmokedModifier>(PlayerControl.LocalPlayer);
-            }
+                var allPlayers = PlayerControl.AllPlayerControls.ToArray().ToList();
 
-            PlayerControl.LocalPlayer.RpcAddModifier<MarksmanSmokedModifier>(PlayerControl.LocalPlayer);
+                foreach (var player in allPlayers)
+                {
+                    player.RpcAddModifier<MarksmanMovingSmokeModifier>(PlayerControl.LocalPlayer);
+                }
+            }
+            else
+            {
+                var smokedPlayers = Helpers.GetClosestPlayers(PlayerControl.LocalPlayer, OptionGroupSingleton<MarksmanOptions>.Instance.SmokebombRadius * ShipStatus.Instance.MaxLightRadius);
+
+                foreach (var player in smokedPlayers)
+                {
+                    player.RpcAddModifier<MarksmanSmokedModifier>(PlayerControl.LocalPlayer);
+                }
+
+                PlayerControl.LocalPlayer.RpcAddModifier<MarksmanSmokedModifier>(PlayerControl.LocalPlayer);
+            }
 
             var notif1 = Helpers.CreateAndShowNotification(
                 $"Smokebomb Activated",
                 Color.white, new Vector3(0f, 1f, -150f),
-                spr: Assets.RoleIcons.Marksman.LoadAsset());
+                spr: RoleIcons.Marksman.LoadAsset());
 
             notif1.AdjustNotification();
         }

@@ -16,28 +16,32 @@ namespace TreeWallMod.Modules
 	public sealed class DriftingCloud : IDisposable
 	{
 		private readonly SpriteRenderer _renderer;
+		private readonly float _scale;
 
 		static float z = -100f;
 
-		private DriftingCloud(SpriteRenderer renderer)
+		private DriftingCloud(SpriteRenderer renderer, float scale)
 		{
 			_renderer = renderer;
+			_scale = scale;
 		}
 
-		public static DriftingCloud Spawn(Sprite cloudSprite, Vector2 startPos, Vector2 endPos, float duration, bool flipX = false)
+		public static DriftingCloud Spawn(Sprite cloudSprite, Vector2 startPos, Vector2 endPos, float duration, bool flipX = false, float scale = 1f, bool offsetX = false)
 		{
-			Vector3 sPos = new(startPos.x, startPos.y, z);
-			Vector3 ePos = new(endPos.x, endPos.y, z);
-
             var renderer = Object.Instantiate(HudManager.Instance.FullScreen, HudManager.Instance.FullScreen.transform.parent);
 			renderer.sprite = cloudSprite;
-			renderer.transform.localPosition = sPos;
             renderer.color = new Color(1f, 1f, 1f, 1f);
-            renderer.transform.localScale = new Vector3(1f, 1f, 1f);
+            renderer.transform.localScale = new Vector3(scale, scale, 1f);
 			renderer.flipX = flipX;
 			renderer.gameObject.SetActive(true);
 
-            var cloud = new DriftingCloud(renderer);
+            float correctingFactor = offsetX ? (258*scale)/renderer.sprite.pixelsPerUnit : 0f;
+
+            Vector3 sPos = new(startPos.x + Mathf.Sign(startPos.x)*correctingFactor, startPos.y, z);
+            Vector3 ePos = new(endPos.x + Mathf.Sign(endPos.x)*correctingFactor, endPos.y, z);
+            renderer.transform.localPosition = sPos;
+
+            var cloud = new DriftingCloud(renderer, scale);
             Coroutines.Start(cloud.CoDrift(sPos, ePos, duration));
 
             //Message($"New Cloud created at: {cloud._renderer.transform.localPosition} with start pos: {sPos} end pos: {ePos} duration: {duration}");
@@ -58,7 +62,7 @@ namespace TreeWallMod.Modules
 				elapsed += Time.deltaTime;
 				var t = elapsed / duration;
 				_renderer.transform.localPosition = Vector3.Lerp(startPos, endPos, t);
-				_renderer.transform.localScale = new Vector3(1f, 1f, 1f);
+				_renderer.transform.localScale = new Vector3(_scale, _scale, 1f);
 				yield return null;
             }
 

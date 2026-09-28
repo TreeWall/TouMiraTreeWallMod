@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using MiraAPI.Events;
 using MiraAPI.GameOptions;
 using MiraAPI.Utilities;
-using Reactor.Utilities;
-using TownOfUs.Events.TouEvents;
 using TownOfUs.Modifiers;
 using TownOfUs.Modules;
-using TownOfUs.Options.Roles.Impostor;
 using TreeWallMod.Modules;
 using TreeWallMod.Options.Roles.Neutral;
 using UnityEngine;
@@ -41,25 +36,31 @@ namespace TreeWallMod.Modifiers.Neutral
         private float randomSpawnTime = UnityEngine.Random.RandomRangeInt(1, 201)/100;
 
         private DriftingCloud SpawnCloud()
-		{
+        {
             var camera = Camera.main;
 
-			float y = camera.orthographicSize;
-			float x = y*camera.aspect*1.25f;
+            float y = camera.orthographicSize;
+            float x = y*camera.aspect;
 
-			int   randomCloudSprite = UnityEngine.Random.RandomRangeInt(0, 4);
-			int   random = UnityEngine.Random.RandomRangeInt(0, 2);
-			int   randomFlip = UnityEngine.Random.RandomRangeInt(0, 2);
-            float randomY = UnityEngine.Random.RandomRangeInt(-(int)(y*100), (int)(y*100) + 1)/100f;
-			float randomDuration = UnityEngine.Random.RandomRangeInt(3, 15);
+            int   randomCloudSprite = UnityEngine.Random.RandomRangeInt(0, 4);
+            int   random = UnityEngine.Random.RandomRangeInt(0, 2);
+            int   randomFlip = UnityEngine.Random.RandomRangeInt(0, 2);
+            float randomY = UnityEngine.Random.RandomRange(-y, y);
+            float randomDuration = UnityEngine.Random.RandomRangeInt(3, 15);
+            float randomScale = UnityEngine.Random.RandomRange(1f, 2.5f);
 
-			var cloudAsset = Assets.Assets.Cloud_4;
+            if (Marksman.AmOwner)
+            {
+                randomScale = 1f;
+            }
 
-			switch (randomCloudSprite)
-			{
-				case 1:
-					cloudAsset = Assets.Assets.Cloud_1;
-					break;
+            var cloudAsset = Assets.Assets.Cloud_4;
+
+            switch (randomCloudSprite)
+            {
+                case 1:
+                    cloudAsset = Assets.Assets.Cloud_1;
+                    break;
                 case 2:
                     cloudAsset = Assets.Assets.Cloud_2;
                     break;
@@ -71,14 +72,14 @@ namespace TreeWallMod.Modifiers.Neutral
                     break;
             }
 
-			var cloud = DriftingCloud.Spawn(
-				cloudAsset.LoadAsset(), new Vector2((random*2 - 1)*x, randomY),
-				new Vector2((1 - random*2)*x, randomY), randomDuration, randomFlip == 0);
+            var cloud = DriftingCloud.Spawn(
+                cloudAsset.LoadAsset(), new Vector2((random*2 - 1)*x, randomY),
+                new Vector2((1 - random*2)*x, randomY), randomDuration, randomFlip == 0, randomScale, true);
 
             return cloud;
-		}
+        }
 
-		private void CloudLogic()
+        private void CloudLogic()
 		{
             cloudObjects.RemoveAll(c => !c.IsAlive());
 

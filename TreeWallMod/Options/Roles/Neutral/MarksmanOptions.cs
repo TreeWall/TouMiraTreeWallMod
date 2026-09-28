@@ -69,6 +69,9 @@ namespace TreeWallMod.Options.Roles.Neutral
         [ModdedNumberOption("Smokebomb Radius", 0.25f, 5f, 0.25f, MiraNumberSuffixes.Multiplier)]
         public float SmokebombRadius { get; set; } = 1f;
 
+		[ModdedToggleOption("Smokebomb Moves with Marksman")]
+		public bool SmokebombMove { get; set; } = false;
+
         [ModdedNumberOption("Warp mark cooldown", 5f, 60f, 2.5f, MiraNumberSuffixes.Seconds)]
 		public float WarpMarkCd { get; set; } = 25f;
 
