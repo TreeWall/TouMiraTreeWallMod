@@ -31,6 +31,12 @@ An [Among Us](https://store.steampowered.com/app/945360/Among_Us/) mod that adds
 
 
 
+|Game Version|Mod Version|Town Of Us: Mira|Download Link|
+|-|-|-|-|
+|17.4|1.0.0|1.7.1+|[v1.0.0](https://github.com/TreeWall/TouMiraTWModAddon/releases/tag/v1.0.0)|
+
+
+
 
 
 # Contributions \& Credits
