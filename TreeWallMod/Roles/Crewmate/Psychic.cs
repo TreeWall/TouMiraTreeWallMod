@@ -11,21 +11,21 @@ using UnityEngine;
 
 namespace TreeWallMod.Roles.Crewmate
 {
-	public sealed class PsychicRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable
-	{
-		public string IdPart => "Psychic";
-		string ICustomRole.IdPrefix => "TreeWallMod.Role";
+    public sealed class PsychicRole(IntPtr cppPtr) : CrewmateRole(cppPtr), ITouCrewRole, IWikiDiscoverable, IDoomable
+    {
+        public string IdPart => "Psychic";
+        string ICustomRole.IdPrefix => "TreeWallMod.Role";
 
-		public bool IsPowerCrew => false;
-		public Color RoleColor => Colors.Psychic;
-		public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
-		public RoleAlignment RoleAlignment => RoleAlignment.CrewmateKilling;
-		public DoomableType DoomHintType => DoomableType.Relentless;
+        public bool IsPowerCrew => false;
+        public Color RoleColor => Colors.Psychic;
+        public ModdedRoleTeams Team => ModdedRoleTeams.Crewmate;
+        public RoleAlignment RoleAlignment => RoleAlignment.CrewmateKilling;
+        public DoomableType DoomHintType => DoomableType.Relentless;
 
-		private List<PsychicKillerInfo> killers = new();
+        private List<PsychicKillerInfo> killers = new();
 
-		float elapsed = 0f;
-		float totalDeltaTime;
+        float elapsed = 0f;
+        float totalDeltaTime;
 
         public string GetAdvancedDescription()
         {
@@ -40,11 +40,11 @@ namespace TreeWallMod.Roles.Crewmate
             get
             {
                 var abilities = new List<CustomButtonWikiDescription>
-				{
-					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}GuessKiller", "Guess Killer"),
-						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}GuessKiller.WikiDescription"),
-						TWCrewAssets.PsychicKillGuessSprite),
-				};
+                {
+                    new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}GuessKiller", "Guess Killer"),
+                        MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}GuessKiller.WikiDescription"),
+                        TWCrewAssets.PsychicKillGuessSprite),
+                };
 
                 return abilities;
             }
@@ -58,44 +58,44 @@ namespace TreeWallMod.Roles.Crewmate
         };
 
         public void FixedUpdate()
-		{
-			if (Player == null || !Player.AmOwner)
-			{
-				return;
-			}
+        {
+            if (Player == null || !Player.AmOwner)
+            {
+                return;
+            }
 
-			totalDeltaTime += Time.deltaTime;
+            totalDeltaTime += Time.deltaTime;
 
-			if (totalDeltaTime > 0.1)
-			{
-				elapsed += totalDeltaTime;
-				totalDeltaTime = 0.0f;
+            if (totalDeltaTime > 0.1)
+            {
+                elapsed += totalDeltaTime;
+                totalDeltaTime = 0.0f;
 
-				for (int i = 0; i < killers.Count; i++)
-				{
-					if (killers[i].Time < elapsed - 15f)
-					{
-						Message($"Removed {MiscUtils.PlayerById(killers[i].KillerId).name}, current count: {killers.Count-1}");
-						killers.RemoveAt(i);
-					}
-				}
-			}
-		}
+                for (int i = 0; i < killers.Count; i++)
+                {
+                    if (killers[i].Time < elapsed - 15f)
+                    {
+                        Message($"Removed {MiscUtils.PlayerById(killers[i].KillerId).name}, current count: {killers.Count-1}");
+                        killers.RemoveAt(i);
+                    }
+                }
+            }
+        }
 
-		public void AddKiller(PlayerControl killer)
-		{
-			killers.Add(new PsychicKillerInfo(killer.PlayerId, elapsed));
-		}
+        public void AddKiller(PlayerControl killer)
+        {
+            killers.Add(new PsychicKillerInfo(killer.PlayerId, elapsed));
+        }
 
-		public bool HasKiller(byte killerId)
-		{
-			return killers.Any(x => x.KillerId == killerId);
-		}
-	}
+        public bool HasKiller(byte killerId)
+        {
+            return killers.Any(x => x.KillerId == killerId);
+        }
+    }
 
-	public readonly struct PsychicKillerInfo(byte killerId, float time)
-	{
-		public byte KillerId { get; } = killerId;
-		public float Time { get; } = time;
-	}
+    public readonly struct PsychicKillerInfo(byte killerId, float time)
+    {
+        public byte KillerId { get; } = killerId;
+        public float Time { get; } = time;
+    }
 }

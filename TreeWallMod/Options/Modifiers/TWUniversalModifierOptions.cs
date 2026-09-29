@@ -1,8 +1,6 @@
 ﻿using MiraAPI.GameOptions;
 using MiraAPI.GameOptions.OptionTypes;
 using MiraAPI.Utilities;
-using System;
-using TreeWallMod.Modifiers.GameModifiers;
 using UnityEngine;
 
 namespace TreeWallMod.Options.Modifiers

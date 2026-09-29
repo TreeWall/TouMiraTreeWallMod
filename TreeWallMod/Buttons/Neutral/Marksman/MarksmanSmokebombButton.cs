@@ -3,18 +3,13 @@ using MiraAPI.Hud;
 using MiraAPI.Modifiers;
 using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
-using System.Collections.Generic;
 using System.Linq;
-using TownOfUs;
 using TownOfUs.Buttons;
-using TownOfUs.Modifiers.Impostor;
-using TownOfUs.Options.Roles.Impostor;
-using TreeWallMod.TWAssets;
 using TreeWallMod.Modifiers.Neutral;
 using TreeWallMod.Options.Roles.Neutral;
 using TreeWallMod.Roles.Neutral;
+using TreeWallMod.TWAssets;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace TreeWallMod.Buttons.Neutral.Marksman
 {

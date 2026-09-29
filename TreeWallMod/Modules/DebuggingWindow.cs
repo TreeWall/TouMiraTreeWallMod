@@ -1,6 +1,5 @@
 ﻿using Reactor.Utilities.Attributes;
 using System;
-using TreeWallMod.Modifiers.GameModifiers;
 using TreeWallMod.Options.Modifiers;
 using UnityEngine;
 using static TreeWallMod.Modules.Debugging;

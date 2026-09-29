@@ -1,53 +1,42 @@
 ﻿using MiraAPI.Events;
 using MiraAPI.Events.Vanilla.Gameplay;
-using MiraAPI.GameOptions;
 using MiraAPI.Modifiers;
 using MiraAPI.Networking;
-using MiraAPI.Utilities;
-using Reactor.Utilities;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TownOfUs.Networking;
-using TownOfUs.Options.Roles.Impostor;
 using UnityEngine;
-using static Rewired.Demos.CustomPlatform.MyPlatformControllerExtension;
-using static UnityEngine.GraphicsBuffer;
 
 namespace TreeWallMod.Modifiers.Neutral
 {
-	public sealed class MarksmanSuppressedModifier(PlayerControl killer) : BaseModifier
-	{
-		public override string ModifierName => "MarksmanSuppressed";
-		public override bool HideOnUi => true;
+    public sealed class MarksmanSuppressedModifier(PlayerControl killer) : BaseModifier
+    {
+        public override string ModifierName => "MarksmanSuppressed";
+        public override bool HideOnUi => true;
 
-		public SpriteRenderer BmOverlay;
-		public PlayerVoteArea VoteArea;
-		public bool Voted;
-		public bool SetAlive { get; set; } = false;
+        public SpriteRenderer BmOverlay;
+        public PlayerVoteArea VoteArea;
+        public bool Voted;
+        public bool SetAlive { get; set; } = false;
 
-		public PlayerControl Killer { get; } = killer;
+        public PlayerControl Killer { get; } = killer;
 
-		public MurderResultFlags murderResultFlags { get; set; } = MurderResultFlags.Succeeded;
+        public MurderResultFlags murderResultFlags { get; set; } = MurderResultFlags.Succeeded;
 
         public override void OnActivate()
-		{
-			base.OnActivate();
+        {
+            base.OnActivate();
 
             var meetingInstance = MeetingHud.Instance;
-			if (!meetingInstance)
-			{
-				if (Player.AmOwner)
-				{
-					Killer.RpcMeetingMurder(Player, MeetingAnimation.None, causeOfDeath: "Marksman");
-				}
+            if (!meetingInstance)
+            {
+                if (Player.AmOwner)
+                {
+                    Killer.RpcMeetingMurder(Player, MeetingAnimation.None, causeOfDeath: "Marksman");
+                }
 
-				ModifierComponent!.RemoveModifier(this);
-				return;
-			}
+                ModifierComponent!.RemoveModifier(this);
+                return;
+            }
 
             VoteArea = meetingInstance.playerStates.FirstOrDefault(x => x.PlayerId == Player.PlayerId)!;
             if (!VoteArea)
@@ -58,7 +47,7 @@ namespace TreeWallMod.Modifiers.Neutral
                 }
 
                 ModifierComponent!.RemoveModifier(this);
-				return;
+                return;
             }
 
             var beforeMurderEvent = new BeforeMurderEvent(Killer, Player, MeetingCheck.ForMeeting);
@@ -75,38 +64,38 @@ namespace TreeWallMod.Modifiers.Neutral
             }
         }
 
-		public override void FixedUpdate()
-		{
-			base.FixedUpdate();
-			var meetingInstance = MeetingHud.Instance;
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            var meetingInstance = MeetingHud.Instance;
 
-			if (!meetingInstance)
-			{
-				return;
-			}
+            if (!meetingInstance)
+            {
+                return;
+            }
 
             if (!VoteArea || VoteArea.DidVote || Voted)
-			{
-				return;
-			}
+            {
+                return;
+            }
 
             if (!Player.AmOwner)
-			{
-				return;
-			}
+            {
+                return;
+            }
 
-			Message("Skipping");
-			VoteArea.SetVote(252);
-			meetingInstance.Confirm(252);
-			if (VoteArea.DidVote)
-			{
-				Voted = true;
-			}
-		}
+            Message("Skipping");
+            VoteArea.SetVote(252);
+            meetingInstance.Confirm(252);
+            if (VoteArea.DidVote)
+            {
+                Voted = true;
+            }
+        }
 
-   //     public override void OnDeath(DeathReason reason)
-   //     {
-			//ModifierComponent!.RemoveModifier(this);
-   //     }
-	}
+        //     public override void OnDeath(DeathReason reason)
+        //     {
+        //ModifierComponent!.RemoveModifier(this);
+        //     }
+    }
 }

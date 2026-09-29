@@ -1,13 +1,8 @@
-﻿using TreeWallMod.Roles.Crewmate;
-using MiraAPI.GameOptions;
+﻿using MiraAPI.GameOptions;
 using MiraAPI.GameOptions.Attributes;
 using MiraAPI.GameOptions.OptionTypes;
 using MiraAPI.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TreeWallMod.Roles.Crewmate;
 
 namespace TreeWallMod.Options.Roles.Crewmate
 {

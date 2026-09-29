@@ -1,11 +1,5 @@
 ﻿using MiraAPI.GameOptions;
 using MiraAPI.GameOptions.OptionTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TreeWallMod.Modifiers.GameModifiers;
 using UnityEngine;
 
 namespace TreeWallMod.Options.Modifiers

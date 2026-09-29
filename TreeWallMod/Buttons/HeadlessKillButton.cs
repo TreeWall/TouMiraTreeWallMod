@@ -1,11 +1,9 @@
 ﻿using MiraAPI.GameOptions;
-using MiraAPI.Hud;
 using MiraAPI.Modifiers;
 using MiraAPI.Networking;
 using MiraAPI.Utilities.Assets;
 using System;
 using TownOfUs.Buttons;
-using TownOfUs.Modifiers;
 using TownOfUs.Modules;
 using TownOfUs.Options.Modifiers.Alliance;
 using TreeWallMod.Modifiers.GameModifers;

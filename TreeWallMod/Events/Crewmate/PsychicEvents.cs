@@ -1,6 +1,6 @@
-﻿using TreeWallMod.Roles.Crewmate;
-using MiraAPI.Events;
+﻿using MiraAPI.Events;
 using MiraAPI.Events.Vanilla.Gameplay;
+using TreeWallMod.Roles.Crewmate;
 
 namespace TreeWallMod.Events.Crewmate
 {

@@ -1,7 +1,6 @@
 using MiraAPI.Utilities.Assets;
-using MiraAPI.Utilities;
 using Reactor.Utilities;
-using UnityEngine;  
+using UnityEngine;
 
 namespace TreeWallMod.TWAssets
 {

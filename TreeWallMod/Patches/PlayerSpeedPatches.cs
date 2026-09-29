@@ -1,12 +1,6 @@
 using HarmonyLib;
-using MiraAPI.GameOptions;
 using MiraAPI.Modifiers;
-using TownOfUs.Options.Maps;
-using TownOfUs.Patches;
-using TreeWallMod.Modifiers.Crewmate;
 using TreeWallMod.Modifiers.GameModifers;
-using TreeWallMod.Modules;
-using TreeWallMod.Options.Roles.Crewmate;
 using TreeWallMod.Roles.Crewmate;
 
 namespace TreeWallMod.Patches
