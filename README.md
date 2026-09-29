@@ -35,7 +35,7 @@ Releases
 
 
 
-### Contributions \& Credits
+# Contributions \& Credits
 
 
 
@@ -49,11 +49,11 @@ Releases
 
 
 
-#### Asset credits
+## Asset credits
 
 * [@AtonyGit](https://github.com/AtonyGit)/[Town Of Us: Mira](https://github.com/AU-Avengers/TOU-Mira) : Syringe Role icon and Button
 
 
 
-#### Idea Credits
+## Idea Credits
 
