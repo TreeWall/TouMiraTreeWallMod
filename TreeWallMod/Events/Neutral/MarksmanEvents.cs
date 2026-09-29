@@ -20,7 +20,7 @@ namespace TreeWallMod.Events.Neutral
         [RegisterEvent]
         public static void AfterMurderEventHandler(AfterMurderEvent @event)
         {
-            Message($"{@event.Target.name} got killed by {@event.Source.name}");
+            //Message($"{@event.Target.name} got killed by {@event.Source.name}");
 
             if (!PlayerControl.LocalPlayer.IsRole<MarksmanRole>())
             {
@@ -95,10 +95,10 @@ namespace TreeWallMod.Events.Neutral
             //Message($"{suppressedPlayers.Count()} players are to be Suppressed");
             foreach (var plr in suppressedPlayers)
             {
-                Message($"Deciding {plr.name}'s fate");
+                //Message($"Deciding {plr.name}'s fate");
                 if (!plr.TryGetModifier<MarksmanSuppressedModifier>(out var marksmanSuppressedMod))
                 {
-                    Message("Doesnt have marksman mod");
+                    //Message("Doesnt have marksman mod");
                     continue;
                 }
 

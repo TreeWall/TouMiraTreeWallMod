@@ -21,7 +21,7 @@ namespace TreeWallMod.Modifiers.Crewmate
         public bool RemovePlayer(PlayerControl player)
         {
             bool ret = 0 < SyringeItems.RemoveAll(x => x.Syringe == player);
-            if (ret) Message($"Removed {player.name} to {Player.name} Length: {SyringeItems.Count}");
+            //if (ret) Message($"Removed {player.name} to {Player.name} Length: {SyringeItems.Count}");
 
             return ret;
         }
@@ -34,7 +34,7 @@ namespace TreeWallMod.Modifiers.Crewmate
             SyringeItems.Add(new SyringeModItem(player, !Player.IsCrewmate()));
 
             ret = SyringeItems.Any(x => x.Syringe == player);
-            if (ret) Message($"Added {player.name} to {Player.name} with Evil set to {SyringeItems.FirstOrDefault(x => x.Syringe == player).Evil}");
+            //if (ret) Message($"Added {player.name} to {Player.name} with Evil set to {SyringeItems.FirstOrDefault(x => x.Syringe == player).Evil}");
 
             CrewmateCheck();
 
@@ -46,7 +46,7 @@ namespace TreeWallMod.Modifiers.Crewmate
             base.OnActivate();
 
             AddPlayer(syringe);
-            Message($"Added {syringe.name} to {Player.name}");
+            //Message($"Added {syringe.name} to {Player.name}");
             //         if (Player.AmOwner)
             //{
             //	this.RpcAddPlayerSyringeInject(Player, syringe);

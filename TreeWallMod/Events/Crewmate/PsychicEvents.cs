@@ -18,7 +18,7 @@ namespace TreeWallMod.Events.Crewmate
 
             psychic.AddKiller(@event.Source);
 
-            Message($"Added {@event.Source.name} to List");
+            //Message($"Added {@event.Source.name} to List");
         }
     }
 }

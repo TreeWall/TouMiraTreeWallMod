@@ -70,7 +70,7 @@ namespace TreeWallMod.Modules
             }
 
             syringeInjectedMod.RemovePlayer(syringe);
-            Message($"Removed {syringe.name} from {syringeInjectedMod.Player.name}");
+            //Message($"Removed {syringe.name} from {syringeInjectedMod.Player.name}");
         }
 
         [MethodRpc((uint)TreeWallModRpcsEnum.AddPlayerSyringeInject)]
@@ -78,12 +78,12 @@ namespace TreeWallMod.Modules
         {
             if (!injected.TryGetModifier<SyringeInjectedModifier>(out var syringeInjectedMod))
             {
-                Message("Doesnt Have modifier!");
+                Warning("Doesnt Have modifier!");
                 return;
             }
 
             syringeInjectedMod.AddPlayer(syringe);
-            Message($"Added {syringe.name} to {syringeInjectedMod.Player.name}");
+            //Message($"Added {syringe.name} to {syringeInjectedMod.Player.name}");
         }
 
         [MethodRpc((uint)TreeWallModRpcsEnum.MarksmanSuppressedComplete)]

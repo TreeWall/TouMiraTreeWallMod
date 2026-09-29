@@ -25,7 +25,7 @@ namespace TreeWallMod
     public partial class TreeWallModPlugin : BasePlugin, IMiraPlugin
     {
         public string OptionsTitleText => "TreeWall Mod";
-        public static bool IsDevBuild => true;
+        public static bool IsDevBuild => false;
 
         public Harmony Harmony { get; } = new(Id);
         public ConfigFile GetConfigFile() => Config;

@@ -32,12 +32,12 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
             Kills += 1;
             Kills %= OptionGroupSingleton<MarksmanOptions>.Instance.NewDiscoverKillsRequired;
 
-            Message($"Killed someone");
+            //Message($"Killed someone");
             if (Kills == 0 && OptionGroupSingleton<MarksmanOptions>.Instance.InitialDiscoverUses != 0)
             {
                 ++UsesLeft;
                 SetUses(UsesLeft);
-                Message($"Added a use as killed");
+                //Message($"Added a use as killed");
             }
         }
 

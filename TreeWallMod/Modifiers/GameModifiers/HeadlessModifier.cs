@@ -104,7 +104,7 @@ namespace TreeWallMod.Modifiers.GameModifers
         {
             base.OnDeactivate();
 
-            Message("OnDeactivate Called");
+            //Message("OnDeactivate Called");
 
             Player.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 

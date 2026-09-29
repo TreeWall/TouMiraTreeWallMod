@@ -84,7 +84,7 @@ namespace TreeWallMod.Modifiers.Neutral
                 return;
             }
 
-            Message("Skipping");
+            //Message("Skipping");
             VoteArea.SetVote(252);
             meetingInstance.Confirm(252);
             if (VoteArea.DidVote)

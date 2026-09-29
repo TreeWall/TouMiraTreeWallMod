@@ -84,21 +84,7 @@ namespace TreeWallMod.Roles.Crewmate
                 {
                     if (plr != null && plr.TryGetModifier<SyringeInjectedModifier>(out var injected))
                     {
-                        string outputString = "";
-                        foreach (var p in injected.SyringeItems)
-                        {
-                            outputString += p.Syringe.name + " ";
-                        }
-                        Message($"{plr.name} Injected Modifier Players: {outputString}");
-
                         plr.RpcRemovePlayerSyringeInject(Player);
-
-                        outputString = "";
-                        foreach (var p in injected.SyringeItems)
-                        {
-                            outputString += p.Syringe.name + " ";
-                        }
-                        Message($"{plr.name} Injected Modifier Players: {outputString}");
                     }
                 }
             }

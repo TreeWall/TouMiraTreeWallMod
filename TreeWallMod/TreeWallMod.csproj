@@ -4,10 +4,11 @@
 		<LangVersion>latest</LangVersion>
 		<DebugType>embedded</DebugType>
 
-		<VersionPrefix>1.0.0</VersionPrefix>
-		<VersionSuffix>dev</VersionSuffix>
-		<Description>Test Mod.</Description>
+		<AssemblyName>TreeWallMod</AssemblyName>
+		<RootNamespace>TreeWallMod</RootNamespace>
+		<Version>1.0.0</Version>
 		<Nullable>enable</Nullable>
+		<Configurations>Release;Debug;</Configurations>
 		<!-- TreeWall -->
 	</PropertyGroup>
 
@@ -16,8 +17,4 @@
 	</ItemGroup>
 
 	<Import Project="../AmongUs.props" />
-
-	<Target Name="CopyDLLToPlugins" AfterTargets="Build">
-		<Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="C:\Users\Dk\Desktop\Modding among us\BepInEx\plugins" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" />
-	</Target>
 </Project>

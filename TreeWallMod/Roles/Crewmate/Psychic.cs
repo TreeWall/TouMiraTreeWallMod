@@ -75,7 +75,7 @@ namespace TreeWallMod.Roles.Crewmate
                 {
                     if (killers[i].Time < elapsed - 15f)
                     {
-                        Message($"Removed {MiscUtils.PlayerById(killers[i].KillerId).name}, current count: {killers.Count-1}");
+                        //Message($"Removed {MiscUtils.PlayerById(killers[i].KillerId).name}, current count: {killers.Count-1}");
                         killers.RemoveAt(i);
                     }
                 }

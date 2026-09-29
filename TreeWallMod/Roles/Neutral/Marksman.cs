@@ -856,7 +856,7 @@ namespace TreeWallMod.Roles.Neutral
 
         public static void Transport(MonoBehaviour mono, Vector3 position)
         {
-            Message($"Transport({mono.name}, {position}) called");
+            //Message($"Transport({mono.name}, {position}) called");
 
             var player = mono.TryCast<PlayerControl>();
             if (player == null)
