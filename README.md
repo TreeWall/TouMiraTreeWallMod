@@ -19,17 +19,15 @@ An [Among Us](https://store.steampowered.com/app/945360/Among_Us/) mod that adds
 
 
 
-### Installation
+## Installation
 
-&#x20;  1.Install the mod using the same setup process as Town Of Us Mira.
-
-&#x20;  2.Once Town Of Us Mira is installed, place TreeWallMod.dll into the \[MODFOLDER]/BepInEx/plugins/ folder.
-
-&#x20;  3.Launch Among Us.
+1. Install the mod using the same setup process as Town Of Us Mira.
+2. Once Town Of Us Mira is installed, place TreeWallMod.dll into the \[MODFOLDER]/BepInEx/plugins/ folder.
+3. Launch Among Us
 
 
 
-Releases
+## Releases
 
 
 
