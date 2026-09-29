@@ -58,7 +58,7 @@ namespace TreeWallMod.Roles.Neutral
         {
             get
             {
-                // heheheehehheehe
+                // this mess enables all the ability descriptions to show up properly in the wiki
                 var abilities = new List<CustomButtonWikiDescription>
                 {
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Discover", "Discover"),
@@ -316,6 +316,7 @@ namespace TreeWallMod.Roles.Neutral
             }
         }
 
+        // Doomsayer hint code is mostly copy pasted from the TOU: M Doomsayer code
         private string GenReport(PlayerControl target)
         {
             string ret = "";
@@ -752,6 +753,7 @@ namespace TreeWallMod.Roles.Neutral
             return modifier is not AssassinModifier;
         }
 
+        // Warping code mostly copy pasted from TOU: M Transporter code
         [MethodRpc((uint)TreeWallModRpcsEnum.MarksmanWarp)]
         public static void RpcWarp(PlayerControl marksman, byte player2)
         {
