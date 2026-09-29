@@ -5,7 +5,7 @@ using TownOfUs.Modifiers;
 using TownOfUs.Options.Roles.Crewmate;
 using TownOfUs.Roles.Crewmate;
 using UnityEngine;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using TreeWallMod.Modifiers.Crewmate;
 using TreeWallMod.Options.Roles.Crewmate;
 using TreeWallMod.Roles.Crewmate;
@@ -21,7 +21,7 @@ namespace TreeWallMod.Buttons.Crewmate
         public override float Cooldown => Math.Clamp(OptionGroupSingleton<RunnerOptions>.Instance.CaffeineCooldown + MapCooldown, 5f, 120f);
         public override float EffectDuration => OptionGroupSingleton<RunnerOptions>.Instance.CaffeineDuration.Value;
         public override int MaxUses => (int)OptionGroupSingleton<RunnerOptions>.Instance.CaffeineUses;
-		public override LoadableAsset<Sprite> Sprite => CrewAssets.RunnerCaffeineSprite;
+		public override LoadableAsset<Sprite> Sprite => TWCrewAssets.RunnerCaffeineSprite;
 		public override bool ZeroIsInfinite { get; set; } = true;
         public bool CanStillUse = true;
 

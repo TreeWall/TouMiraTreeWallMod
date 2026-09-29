@@ -63,16 +63,16 @@ namespace TreeWallMod
                 switch (rand)
                 {
                     case 0:
-                        return Assets.Assets.FartKillSound1;
+                        return TWAssets.TWAssets.FartKillSound1;
 
                     case 1:
-                        return Assets.Assets.FartKillSound2;
+                        return TWAssets.TWAssets.FartKillSound2;
 
                     case 2:
-                        return Assets.Assets.FartKillSound3;
+                        return TWAssets.TWAssets.FartKillSound3;
 
                     default:
-                        return Assets.Assets.FartKillSound2;
+                        return TWAssets.TWAssets.FartKillSound2;
                 }
             },
             isEnabled: () => OptionGroupSingleton<TWGeneralOptions>.Instance.FartKill);

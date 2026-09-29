@@ -27,7 +27,7 @@ using TownOfUs.Networking;
 using TownOfUs.Roles;
 using TownOfUs.Roles.Crewmate;
 using TownOfUs.Roles.Neutral;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using TreeWallMod.Buttons.Neutral.Marksman;
 using TreeWallMod.Modifiers.Neutral;
 using TreeWallMod.Options.Roles.Neutral;
@@ -63,37 +63,37 @@ namespace TreeWallMod.Roles.Neutral
 				{
 					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Discover", "Discover"),
 						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Discover.WikiDescription"),
-						NeutAssets.MarksmanDiscover),
+						TWNeutAssets.MarksmanDiscoverSprite),
 					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}SharpenedBlade", "SharpenedBlade"),
 						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}SharpenedBlade.WikiDescription"),
-						NeutAssets.MarksmanSharpenedBlade),
+						TWNeutAssets.MarksmanSharpenedBladeSprite),
 					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Smokebomb", "Smokebomb"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Smokebomb.WikiDescription"),
-                        NeutAssets.MarksmanSmokeBomb),
+                        TWNeutAssets.MarksmanSmokeBombSprite),
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Warp", "Warp"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Warp.WikiDescription"),
-                        NeutAssets.MarksmanWarp),
+                        TWNeutAssets.MarksmanWarpSprite),
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Vanish", "Vanish"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Vanish.WikiDescription"),
                         TouImpAssets.SwoopSprite),
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dismantle", "Dismantle"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dismantle.WikiDescription"),
-                        NeutAssets.MarksmanDismantle),
+                        TWNeutAssets.MarksmanDismantleSprite),
 					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Supressor", "Supressor"),
 						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Supressor.WikiDescription"),
-						NeutAssets.MarksmanSuppressed),
+						TWNeutAssets.MarksmanSuppressedSprite),
 					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover", "Dualscover"),
 						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover.WikiDescription"),
-						NeutAssets.MarksmanDiscover),
+						TWNeutAssets.MarksmanDiscoverSprite),
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover", "Dualscover"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover.WikiDescription"),
-                        NeutAssets.MarksmanDiscover),
+                        TWNeutAssets.MarksmanDiscoverSprite),
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover", "Dualscover"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover.WikiDescription"),
-                        NeutAssets.MarksmanDiscover),
+                        TWNeutAssets.MarksmanDiscoverSprite),
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover", "Dualscover"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Dualscover.WikiDescription"),
-                        NeutAssets.MarksmanDiscover),
+                        TWNeutAssets.MarksmanDiscoverSprite),
                 };
 
                 return abilities;
@@ -103,9 +103,9 @@ namespace TreeWallMod.Roles.Neutral
         public CustomRoleConfiguration Configuration => new(this)
 		{
 			MaxRoleCount = 1,
-			IconTmp = TmpSpriteUtils.CreateSpriteAsset(RoleIcons.Marksman.LoadAsset(), "TreeWallMod.Roles.Neutral.Marksman", 1.45f),
+			IconTmp = TmpSpriteUtils.CreateSpriteAsset(TWRoleIcons.Marksman.LoadAsset(), "TreeWallMod.Roles.Neutral.Marksman", 1.45f),
 			CanUseVent = OptionGroupSingleton<MarksmanOptions>.Instance.CanVent,
-			Icon = RoleIcons.Marksman,
+			Icon = TWRoleIcons.Marksman,
 			OptionsScreenshot = TouBanners.NeutralRoleBanner,
 			GhostRole = (RoleTypes)RoleId.Get<NeutralGhostRole>()
 		};
@@ -586,7 +586,7 @@ namespace TreeWallMod.Roles.Neutral
 					{
 						var notifDeath1 = Helpers.CreateAndShowNotification(
 							"That was an incorrect Guess NOW DIE",
-							Color.red, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanDiscover.LoadAsset());
+							Color.red, new Vector3(0f, 1f, -20f), spr: TWNeutAssets.MarksmanDiscoverSprite.LoadAsset());
 
 						notifDeath1.AdjustNotification();
 
@@ -599,7 +599,7 @@ namespace TreeWallMod.Roles.Neutral
 
 					var notif2 = Helpers.CreateAndShowNotification(
 						$"That was an incorrect Guess, Incorrect Guesses Left: {(opts.MisguessAvailable ? 1 : 0) - IncorrectGuesses}",
-						Color.white, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanDiscover.LoadAsset());
+						Color.white, new Vector3(0f, 1f, -20f), spr: TWNeutAssets.MarksmanDiscoverSprite.LoadAsset());
 
 					notif2.AdjustNotification();
 
@@ -667,7 +667,7 @@ namespace TreeWallMod.Roles.Neutral
 				{
 					var notif1 = Helpers.CreateAndShowNotification(
 						$"Sharpened Blade was Unlocked! Your Kill Cd has been decreased by {opts.SharpenedBladeKillCdReduction} seconds.",
-						Color.white, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanSharpenedBlade.LoadAsset());
+						Color.white, new Vector3(0f, 1f, -20f), spr: TWNeutAssets.MarksmanSharpenedBladeSprite.LoadAsset());
 
 					notif1.AdjustNotification();
 
@@ -678,7 +678,7 @@ namespace TreeWallMod.Roles.Neutral
                 {
                     var notif1 = Helpers.CreateAndShowNotification(
                         $"Smokebomb was Unlocked! You can now blind players in a set radius, this is not like grenadier, this has smoke",
-                        Color.white, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanSmokeBomb.LoadAsset());
+                        Color.white, new Vector3(0f, 1f, -20f), spr: TWNeutAssets.MarksmanSmokeBombSprite.LoadAsset());
 
                     notif1.AdjustNotification();
 
@@ -689,7 +689,7 @@ namespace TreeWallMod.Roles.Neutral
 				{
 					var notif1 = Helpers.CreateAndShowNotification(
 						$"Warp was Unlocked! You can now mark a player to Warp to them",
-						Color.white, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanWarp.LoadAsset());
+						Color.white, new Vector3(0f, 1f, -20f), spr: TWNeutAssets.MarksmanWarpSprite.LoadAsset());
 
 					notif1.AdjustNotification();
 
@@ -711,7 +711,7 @@ namespace TreeWallMod.Roles.Neutral
                 {
                     var notif1 = Helpers.CreateAndShowNotification(
                         $"Dismantle was Unlocked! You can now make a Player unable to move, use abilities or SEE :D, but you only have 1 use!",
-                        Color.white, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanDismantle.LoadAsset());
+                        Color.white, new Vector3(0f, 1f, -20f), spr: TWNeutAssets.MarksmanDismantleSprite.LoadAsset());
 
                     notif1.AdjustNotification();
 
@@ -722,7 +722,7 @@ namespace TreeWallMod.Roles.Neutral
 				{
 					var notif1 = Helpers.CreateAndShowNotification(
 						$"Supressor was Unlocked! You can now guess people without anyone else knowing.",
-						Color.white, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanSuppressed.LoadAsset());
+						Color.white, new Vector3(0f, 1f, -20f), spr: TWNeutAssets.MarksmanSuppressedSprite.LoadAsset());
 
 					notif1.AdjustNotification();
 
@@ -733,7 +733,7 @@ namespace TreeWallMod.Roles.Neutral
 				{
 					var notif1 = Helpers.CreateAndShowNotification(
 						$"Dualscover was Unlocked! You can now use Discover twice.",
-						Color.white, new Vector3(0f, 1f, -20f), spr: NeutAssets.MarksmanDiscover.LoadAsset());
+						Color.white, new Vector3(0f, 1f, -20f), spr: TWNeutAssets.MarksmanDiscoverSprite.LoadAsset());
 
 					notif1.AdjustNotification();
 

@@ -17,7 +17,7 @@ using TownOfUs.Modifiers;
 using TownOfUs.Modifiers.Crewmate;
 using TownOfUs.Networking;
 using TownOfUs.Utilities;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using TreeWallMod.Modifiers.Crewmate;
 using TreeWallMod.Options.Roles.Crewmate;
 using TreeWallMod.Roles.Crewmate;
@@ -67,7 +67,7 @@ namespace TreeWallMod.Events.Crewmate
 
                 var notif1 = Helpers.CreateAndShowNotification(
 					$"You got cured!", Color.white,
-					new Vector3(0f, 1f, -20f), spr: CrewAssets.SyringeInjectSprite.LoadAsset());
+					new Vector3(0f, 1f, -20f), spr: TWCrewAssets.SyringeInjectSprite.LoadAsset());
                 notif1.AdjustNotification();
             }
 		}

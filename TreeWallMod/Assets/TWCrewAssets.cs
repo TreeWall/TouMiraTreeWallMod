@@ -1,9 +1,9 @@
 using MiraAPI.Utilities.Assets;
 using UnityEngine;
 
-namespace TreeWallMod.Assets
+namespace TreeWallMod.TWAssets
 {
-    public static class CrewAssets
+    public static class TWCrewAssets
     {
         private const string ShortPath = "TreeWallMod.Resources.CrewButtons";
         public static LoadableAsset<Sprite> RunnerCaffeineSprite { get; } = new LoadableResourceAsset($"{ShortPath}.Caffeine.png");

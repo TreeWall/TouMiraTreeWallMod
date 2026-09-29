@@ -16,7 +16,7 @@ using TownOfUs.Modifiers.Crewmate;
 using TownOfUs.Modules.Wiki;
 using TownOfUs.Roles;
 using TownOfUs.Roles.Crewmate;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using TreeWallMod.Modifiers.Crewmate;
 using TreeWallMod.Modules;
 using UnityEngine;
@@ -55,15 +55,15 @@ namespace TreeWallMod.Roles.Crewmate
 				{
 					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Inject", "Inject"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Inject.WikiDescription"),
-						CrewAssets.SyringeInjectSprite),
+						TWCrewAssets.SyringeInjectSprite),
 				};
 			}
 		}
 
 		public CustomRoleConfiguration Configuration => new(this)
 		{
-            IconTmp = TmpSpriteUtils.CreateSpriteAsset(RoleIcons.Syringe.LoadAsset(), "TreeWallMod.Roles.Crewmate.Syringe", 1.45f),
-            Icon = RoleIcons.Syringe,
+            IconTmp = TmpSpriteUtils.CreateSpriteAsset(TWRoleIcons.Syringe.LoadAsset(), "TreeWallMod.Roles.Crewmate.Syringe", 1.45f),
+            Icon = TWRoleIcons.Syringe,
             OptionsScreenshot = TouBanners.CrewmateRoleBanner,
         };
 

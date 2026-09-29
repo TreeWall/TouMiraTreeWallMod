@@ -3,7 +3,7 @@ using MiraAPI.Hud;
 using MiraAPI.Utilities.Assets;
 using System;
 using TownOfUs.Buttons;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using TreeWallMod.Options.Roles.Neutral;
 using TreeWallMod.Roles.Neutral;
 using UnityEngine;
@@ -16,7 +16,7 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
         public override Color TextOutlineColor => Colors.Marksman;
 		public override float Cooldown => Math.Clamp(OptionGroupSingleton<MarksmanOptions>.Instance.WarpMarkCd + MapCooldown, 5f, 120f);
 		public override ButtonLocation Location => ButtonLocation.BottomRight;
-		public override LoadableAsset<Sprite> Sprite => NeutAssets.MarksmanWarp;
+		public override LoadableAsset<Sprite> Sprite => TWNeutAssets.MarksmanWarpSprite;
         public override bool ShouldPauseInVent => false;
 
         public override PlayerControl? GetTarget()

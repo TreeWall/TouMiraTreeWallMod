@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TownOfUs.Roles;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using UnityEngine;
 
 namespace TreeWallMod.Roles.Crewmate
@@ -43,7 +43,7 @@ namespace TreeWallMod.Roles.Crewmate
 				{
 					new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}GuessKiller", "Guess Killer"),
 						MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}GuessKiller.WikiDescription"),
-						CrewAssets.PsychicKillGuessSprite),
+						TWCrewAssets.PsychicKillGuessSprite),
 				};
 
                 return abilities;
@@ -52,8 +52,8 @@ namespace TreeWallMod.Roles.Crewmate
 
         public CustomRoleConfiguration Configuration => new(this)
         {
-            IconTmp = TmpSpriteUtils.CreateSpriteAsset(RoleIcons.Psychic.LoadAsset(), "TreeWallMod.Roles.Crewmate.Psychic", 1.45f),
-            Icon = RoleIcons.Psychic,
+            IconTmp = TmpSpriteUtils.CreateSpriteAsset(TWRoleIcons.Psychic.LoadAsset(), "TreeWallMod.Roles.Crewmate.Psychic", 1.45f),
+            Icon = TWRoleIcons.Psychic,
             OptionsScreenshot = TouBanners.CrewmateRoleBanner,
         };
 

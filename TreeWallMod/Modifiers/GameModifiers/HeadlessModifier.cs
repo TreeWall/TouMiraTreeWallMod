@@ -19,6 +19,7 @@ using TownOfUs.Utilities.Appearances;
 using TreeWallMod.Buttons;
 using TreeWallMod.Modules;
 using TreeWallMod.Options.Modifiers;
+using TreeWallMod.TWAssets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +33,7 @@ namespace TreeWallMod.Modifiers.GameModifers
             "TreeWallMod.Modifier.Universal.Headless", 1.45f));
         public override string IdPart => "Headless";
         public override string ModifierName => "Headless";
-        public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Shy;
+        public override LoadableAsset<Sprite>? ModifierIcon => TWModifAssets.HeadlessModifierSprite;
 
         public override ModifierFaction FactionType => ModifierFaction.UniversalVisibility;
         public override Color FreeplayFileColor => Colors.HeadlessModifier;
@@ -87,7 +88,7 @@ namespace TreeWallMod.Modifiers.GameModifers
 				body.ClearBody();
 			}
 
-			HeadlessObject =  HeadlessPlayer.Spawn(Player, idleAnim: Assets.Assets.HeadlessIdleAnim.LoadAsset(), walkAnim: Assets.Assets.HeadlessWalkAnim.LoadAsset());
+			HeadlessObject =  HeadlessPlayer.Spawn(Player, idleAnim: TWAssets.TWAssets.HeadlessIdleAnim.LoadAsset(), walkAnim: TWAssets.TWAssets.HeadlessWalkAnim.LoadAsset());
 
 			Player.gameObject.layer = LayerMask.NameToLayer("Players");
 

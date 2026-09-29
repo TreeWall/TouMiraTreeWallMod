@@ -18,7 +18,7 @@ using TownOfUs.Networking;
 using TownOfUs.Options.Roles.Impostor;
 using TownOfUs.Roles.Impostor;
 using TownOfUs.Utilities;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using TreeWallMod.Modifiers.Crewmate;
 using TreeWallMod.Modules;
 using TreeWallMod.Options.Roles.Crewmate;
@@ -34,7 +34,7 @@ namespace TreeWallMod.Buttons.Crewmate
 		public override Color TextOutlineColor => TreeWallMod.Colors.Syringe;
 		public override float Cooldown => OptionGroupSingleton<SyringeOptions>.Instance.InjectCd;
 		public override float InitialCooldown => OptionGroupSingleton<SyringeOptions>.Instance.InjectCd;
-		public override LoadableAsset<Sprite> Sprite => CrewAssets.SyringeInjectSprite;
+		public override LoadableAsset<Sprite> Sprite => TWCrewAssets.SyringeInjectSprite;
 
 		public override PlayerControl? GetTarget()
 		{
@@ -59,7 +59,7 @@ namespace TreeWallMod.Buttons.Crewmate
 
 			var notif1 = Helpers.CreateAndShowNotification(
 				$"Injected {Target.name}!", Color.white,
-				new Vector3(0f, 1f, -20f), spr: CrewAssets.SyringeInjectSprite.LoadAsset());
+				new Vector3(0f, 1f, -20f), spr: TWCrewAssets.SyringeInjectSprite.LoadAsset());
 			notif1.AdjustNotification();
 
 			//if (Target.TryGetModifier<SyringeInjectedModifier>(out var injected))

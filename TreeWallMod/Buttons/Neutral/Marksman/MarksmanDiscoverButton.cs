@@ -16,7 +16,7 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
 		public override float Cooldown => Mathf.Clamp(OptionGroupSingleton<MarksmanOptions>.Instance.DiscoverCd + MapCooldown, 5f, 120f);
         public override int MaxUses => (int)OptionGroupSingleton<MarksmanOptions>.Instance.InitialDiscoverUses;
 		public override ButtonLocation Location => ButtonLocation.BottomRight;
-		public override LoadableAsset<Sprite> Sprite => Assets.NeutAssets.MarksmanDiscover;
+		public override LoadableAsset<Sprite> Sprite => TWAssets.TWNeutAssets.MarksmanDiscoverSprite;
         public override bool ShouldPauseInVent => false;
 
         public override bool UsableInDeath => false;

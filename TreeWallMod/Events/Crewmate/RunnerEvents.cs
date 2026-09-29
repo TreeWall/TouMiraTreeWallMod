@@ -11,7 +11,7 @@ using TownOfUs.Patches;
 using TownOfUs.Roles.Crewmate;
 using TownOfUs.Roles.Impostor;
 using TownOfUs.Utilities;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using TreeWallMod.Buttons.Crewmate;
 using TreeWallMod.Modules;
 using TreeWallMod.Options.Roles.Crewmate;
@@ -42,7 +42,7 @@ namespace TreeWallMod.Events.Crewmate
 				{
 					var notif1 = Helpers.CreateAndShowNotification(
 						"Target was a Runner, cannot kill them while they are running",
-						Color.white, new Vector3(0f, 1f, -20f), spr: CrewAssets.RunnerCaffeineSprite.LoadAsset());
+						Color.white, new Vector3(0f, 1f, -20f), spr: TWCrewAssets.RunnerCaffeineSprite.LoadAsset());
 
 					notif1.AdjustNotification();
 				}

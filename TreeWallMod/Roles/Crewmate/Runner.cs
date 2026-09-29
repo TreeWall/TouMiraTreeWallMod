@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using TownOfUs.Roles;
 using TownOfUs.Roles.Crewmate;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using UnityEngine;
 
 
@@ -43,7 +43,7 @@ namespace TreeWallMod.Roles.Crewmate
                 {
                     new(MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Caffeine", "Caffeine"),
                         MiraLocaleManager.Get($"TreeWallMod.Role.{IdPart}Caffeine.WikiDescription"),
-                        CrewAssets.RunnerCaffeineSprite),
+                        TWCrewAssets.RunnerCaffeineSprite),
                 };
 
                 return abilities;
@@ -64,8 +64,8 @@ namespace TreeWallMod.Roles.Crewmate
 
         public CustomRoleConfiguration Configuration => new(this)
         {
-            IconTmp = TmpSpriteUtils.CreateSpriteAsset(RoleIcons.Runner.LoadAsset(), "TreeWallMod.Roles.Crewmate.Runner", 1.45f),
-            Icon = RoleIcons.Runner,
+            IconTmp = TmpSpriteUtils.CreateSpriteAsset(TWRoleIcons.Runner.LoadAsset(), "TreeWallMod.Roles.Crewmate.Runner", 1.45f),
+            Icon = TWRoleIcons.Runner,
             OptionsScreenshot = TouBanners.CrewmateRoleBanner,
         };
 

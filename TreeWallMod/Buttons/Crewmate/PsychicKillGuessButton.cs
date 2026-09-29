@@ -30,7 +30,7 @@ namespace TreeWallMod.Buttons.Crewmate
 		public override Color TextOutlineColor => new Color32(165, 231, 89, 255);
 		public override float Cooldown => Math.Clamp(OptionGroupSingleton<PsychicOptions>.Instance.PsychicGuessCd + MapCooldown, 5f, 120f);
         public override ButtonLocation Location => ButtonLocation.BottomLeft;
-		public override LoadableAsset<Sprite> Sprite => Assets.CrewAssets.PsychicKillGuessSprite;
+		public override LoadableAsset<Sprite> Sprite => TWAssets.TWCrewAssets.PsychicKillGuessSprite;
         public bool CanStillUse = true;
 
         public override bool UsableInDeath => false;

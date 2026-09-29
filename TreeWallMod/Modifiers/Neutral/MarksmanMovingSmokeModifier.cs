@@ -61,21 +61,21 @@ namespace TreeWallMod.Modifiers.Neutral
 				randomScale = 1f;
 			}
 
-			var cloudAsset = Assets.Assets.Cloud_4;
+			var cloudAsset = TWAssets.TWAssets.Cloud_4;
 
 			switch (randomCloudSprite)
 			{
 				case 1:
-					cloudAsset = Assets.Assets.Cloud_1;
+					cloudAsset = TWAssets.TWAssets.Cloud_1;
 					break;
 				case 2:
-					cloudAsset = Assets.Assets.Cloud_2;
+					cloudAsset = TWAssets.TWAssets.Cloud_2;
 					break;
 				case 3:
-					cloudAsset = Assets.Assets.Cloud_3;
+					cloudAsset = TWAssets.TWAssets.Cloud_3;
 					break;
 				case 4:
-					cloudAsset = Assets.Assets.Cloud_4;
+					cloudAsset = TWAssets.TWAssets.Cloud_4;
 					break;
 			}
 

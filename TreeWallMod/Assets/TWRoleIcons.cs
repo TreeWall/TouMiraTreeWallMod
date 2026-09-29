@@ -1,9 +1,9 @@
 using MiraAPI.Utilities.Assets;
 using UnityEngine;
 
-namespace TreeWallMod.Assets
+namespace TreeWallMod.TWAssets
 {
-    public static class RoleIcons
+    public static class TWRoleIcons
     {
         private const string ShortPath = "TreeWallMod.Resources.RoleIcons";
 

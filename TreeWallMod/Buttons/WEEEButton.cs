@@ -12,6 +12,7 @@ using TownOfUs.Modifiers.Game.Assailant;
 using TownOfUs.Options.Modifiers.Assailant;
 using TreeWallMod.Modifiers.GameModifiers;
 using TreeWallMod.Options.Modifiers;
+using TreeWallMod.TWAssets;
 using UnityEngine;
 
 namespace TreeWallMod.Buttons
@@ -20,7 +21,7 @@ namespace TreeWallMod.Buttons
     {
         public override string Name => "Strech";
         public override float Cooldown => Math.Clamp(OptionGroupSingleton<WEEEModifierOptions>.Instance.Cooldown.Value + MapCooldown, 2.5f, 120f);
-        public override LoadableAsset<Sprite> Sprite => TouAssets.OverclockSprite; // placeholder
+        public override LoadableAsset<Sprite> Sprite => TWModifAssets.StrechSprite;
         public override float EffectDuration => OptionGroupSingleton<WEEEModifierOptions>.Instance.Duration.Value;
         public override ButtonLocation Location => ButtonLocation.BottomLeft;
 

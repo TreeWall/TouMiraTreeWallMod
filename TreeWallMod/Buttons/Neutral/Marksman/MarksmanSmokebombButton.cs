@@ -9,7 +9,7 @@ using TownOfUs;
 using TownOfUs.Buttons;
 using TownOfUs.Modifiers.Impostor;
 using TownOfUs.Options.Roles.Impostor;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using TreeWallMod.Modifiers.Neutral;
 using TreeWallMod.Options.Roles.Neutral;
 using TreeWallMod.Roles.Neutral;
@@ -26,7 +26,7 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
         public override float EffectDuration => OptionGroupSingleton<MarksmanOptions>.Instance.SmokebombDuration;
         public override int MaxUses => (int)OptionGroupSingleton<MarksmanOptions>.Instance.SmokebombUses;
         public override ButtonLocation Location => ButtonLocation.BottomLeft;
-        public override LoadableAsset<Sprite> Sprite => NeutAssets.MarksmanSmokeBomb;
+        public override LoadableAsset<Sprite> Sprite => TWNeutAssets.MarksmanSmokeBombSprite;
         public override bool ShouldPauseInVent => true;
         public override bool ZeroIsInfinite { get; set; } = true;
 
@@ -65,7 +65,7 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
             var notif1 = Helpers.CreateAndShowNotification(
                 $"Smokebomb Activated",
                 Color.white, new Vector3(0f, 1f, -150f),
-                spr: RoleIcons.Marksman.LoadAsset());
+                spr: TWRoleIcons.Marksman.LoadAsset());
 
             notif1.AdjustNotification();
         }

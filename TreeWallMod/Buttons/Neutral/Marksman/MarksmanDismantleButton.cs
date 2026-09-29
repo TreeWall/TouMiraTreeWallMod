@@ -12,7 +12,7 @@ using TownOfUs;
 using TownOfUs.Buttons;
 using TownOfUs.Modifiers.Neutral;
 using TownOfUs.Roles.Neutral;
-using TreeWallMod.Assets;
+using TreeWallMod.TWAssets;
 using TreeWallMod.Modifiers.Neutral;
 using TreeWallMod.Options.Roles.Neutral;
 using TreeWallMod.Roles.Neutral;
@@ -28,7 +28,7 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
         public override float EffectDuration => OptionGroupSingleton<MarksmanOptions>.Instance.DismantleDelay;
 		public override int MaxUses => 1;
 		public override ButtonLocation Location => ButtonLocation.BottomLeft;
-		public override LoadableAsset<Sprite> Sprite => NeutAssets.MarksmanDismantle;
+		public override LoadableAsset<Sprite> Sprite => TWNeutAssets.MarksmanDismantleSprite;
 		public override bool ShouldPauseInVent => false;
 		public override bool UsableFirstRound => false;
 
@@ -63,7 +63,7 @@ namespace TreeWallMod.Buttons.Neutral.Marksman
 
             var notif1 = Helpers.CreateAndShowNotification(
                 $"Dismantled {finalTarget.name}",
-                Color.white, new Vector3(0f, 1f, -20f), spr: RoleIcons.Marksman.LoadAsset());
+                Color.white, new Vector3(0f, 1f, -20f), spr: TWRoleIcons.Marksman.LoadAsset());
             notif1.AdjustNotification();
 
             finalTarget.RpcAddModifier<MarksmanDismantledModifier>(PlayerControl.LocalPlayer);

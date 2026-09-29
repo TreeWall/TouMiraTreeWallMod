@@ -3,9 +3,9 @@ using MiraAPI.Utilities;
 using Reactor.Utilities;
 using UnityEngine;  
 
-namespace TreeWallMod.Assets
+namespace TreeWallMod.TWAssets
 {
-    public static class Assets
+    public static class TWAssets
     {
         private const string ShortPath = "TreeWallMod.Resources";
 

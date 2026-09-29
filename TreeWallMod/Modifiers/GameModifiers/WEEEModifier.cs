@@ -15,6 +15,7 @@ using TownOfUs.Modifiers;
 using TownOfUs.Modifiers.Game;
 using TreeWallMod.Modules;
 using TreeWallMod.Options.Modifiers;
+using TreeWallMod.TWAssets;
 using UnityEngine;
 
 namespace TreeWallMod.Modifiers.GameModifiers
@@ -27,7 +28,7 @@ namespace TreeWallMod.Modifiers.GameModifiers
             "TreeWallMod.Modifier.Universal.WEEE", 1.45f));
         public override string IdPart => "WEEE";
         public override string ModifierName => "WEEE";
-        public override LoadableAsset<Sprite>? ModifierIcon => TouModifierIcons.Shy;
+        public override LoadableAsset<Sprite>? ModifierIcon => TWModifAssets.WEEEModifierSprite;
 
         public override ModifierFaction FactionType => ModifierFaction.UniversalVisibility;
         public override Color FreeplayFileColor => Colors.WEEEModifer;

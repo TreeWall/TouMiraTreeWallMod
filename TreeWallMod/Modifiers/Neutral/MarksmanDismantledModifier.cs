@@ -53,7 +53,7 @@ namespace TreeWallMod.Modifiers.Neutral
 				var notif1 = Helpers.CreateAndShowNotification(
 					$"A Marksman Dismantled you, just sit for a round and hope no one kills you",
 					Color.white,
-					spr: Assets.RoleIcons.Marksman.LoadAsset());
+					spr: TWAssets.TWRoleIcons.Marksman.LoadAsset());
 
 				notif1.AdjustNotification();
 				notif1.transform.localPosition = new Vector3(0f, 1f, -150f);

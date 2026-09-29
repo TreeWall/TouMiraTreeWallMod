@@ -50,7 +50,7 @@ namespace TreeWallMod.Modules
             {
                 if (TutorialManager.InstanceExists)
                 {
-                    HeadlessPlayer.Spawn(PlayerControl.LocalPlayer, idleAnim: Assets.Assets.HeadlessIdleAnim.LoadAsset(), walkAnim: Assets.Assets.HeadlessWalkAnim.LoadAsset());
+                    HeadlessPlayer.Spawn(PlayerControl.LocalPlayer, idleAnim: TWAssets.TWAssets.HeadlessIdleAnim.LoadAsset(), walkAnim: TWAssets.TWAssets.HeadlessWalkAnim.LoadAsset());
                 }
             }
             if (GUILayout.Button("AddStrechComponent") && TutorialManager.InstanceExists)
