@@ -129,7 +129,7 @@ You can stretch.
 
 |Game Version|Mod Version|Town Of Us: Mira|Download Link|
 |-|-|-|-|
-|17.4|1.0.0|1.7.1+|[v1.0.0](https://github.com/TreeWall/TouMiraTWModAddon/releases/tag/v1.0.0)|
+|17.4|1.0.0|1.7.1+|[v1.0.0](https://github.com/TreeWall/TouMiraTreeWallMod/releases/tag/v1.0.0)|
 
 
 
