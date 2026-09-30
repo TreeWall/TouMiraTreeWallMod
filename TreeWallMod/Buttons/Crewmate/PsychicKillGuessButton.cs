@@ -80,15 +80,16 @@ namespace TreeWallMod.Buttons.Crewmate
 
         public override void OnEffectEnd()
         {
-            if (Victim == null || Victim.HasDied() || (Victim.TryGetModifier<DisabledModifier>(out var mod) && (!mod.IsConsideredAlive || !mod.CanBeInteractedWith)) || MeetingHud.Instance)
+            if (Victim == null || Victim.Data.Disconnected || (Victim.TryGetModifier<DisabledModifier>(out var mod) && (!mod.IsConsideredAlive || !mod.CanBeInteractedWith)) || MeetingHud.Instance)
             {
+                SetTimer(5f);
                 return;
             }
 
             var player = PlayerControl.LocalPlayer;
             var psychic = player.GetRole<PsychicRole>()!;
 
-            if (psychic.HasKiller(Victim.PlayerId))
+            if (psychic.HasKiller(Victim.PlayerId) && !Victim.Data.IsDead)
             {
                 try
                 {
