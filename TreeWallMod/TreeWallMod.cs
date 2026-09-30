@@ -25,10 +25,11 @@ namespace TreeWallMod
     public partial class TreeWallModPlugin : BasePlugin, IMiraPlugin
     {
         public string OptionsTitleText => "TreeWall Mod";
-        public static bool IsDevBuild => false;
-
+        public static bool IsDevBuild =>
 #if DEBUG
-        IsDevBuild = true;
+    true;
+#else
+    false;
 #endif
 
         public Harmony Harmony { get; } = new(Id);
