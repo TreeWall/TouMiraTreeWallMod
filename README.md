@@ -13,9 +13,37 @@ An [Among Us](https://store.steampowered.com/app/945360/Among_Us/) mod that adds
 
 
 
-(Wiki left, its 5am)
+## Roles
 
 
+
+### Runner
+
+
+
+The Runner is a Crewmate Protective role that cannot be killed while they are running in their Caffeinated state (can be changed from the options).
+
+This Role cannot be guessed.
+
+
+
+### Syringe
+
+
+
+The Syringe is a Crewmate Killing role that can "Inject" other Players. If an Injected player kills a player, they get "cured" (i.e. Die), and the Killer's body disappears.
+
+If the Syringe Injects a Crewmate, one of the three following events can take place:
+
+* Crewmate and Syringe both Die
+* Crewmate turns into a [Traitor](https://au-avengers.github.io/docs.toum.gg/docs/roles/impostor/power/Traitor)
+* Nothing Happens
+
+The Chances of these events taking place can be changed by the host
+
+
+
+Note: The role can never become [Traitor](https://au-avengers.github.io/docs.toum.gg/docs/roles/impostor/power/Traitor), [Crewposter](https://au-avengers.github.io/docs.toum.gg/docs/modifiers/alliance/Crewpostor), [Egotist](https://au-avengers.github.io/docs.toum.gg/docs/modifiers/alliance/Egotist) or any other Evil.
 
 
 
