@@ -27,6 +27,10 @@ namespace TreeWallMod
         public string OptionsTitleText => "TreeWall Mod";
         public static bool IsDevBuild => false;
 
+#if DEBUG
+        IsDevBuild = true;
+#endif
+
         public Harmony Harmony { get; } = new(Id);
         public ConfigFile GetConfigFile() => Config;
 

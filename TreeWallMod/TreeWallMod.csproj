@@ -9,6 +9,8 @@
 		<Version>1.0.0</Version>
 		<Nullable>enable</Nullable>
 		<Configurations>Release;Debug;</Configurations>
+
+		<VersionSuffix Condition="'$(Configuration)' == 'Debug'">dev</VersionSuffix>
 		<!-- TreeWall -->
 	</PropertyGroup>
 
@@ -17,4 +19,8 @@
 	</ItemGroup>
 
 	<Import Project="../AmongUs.props" />
+
+	<Target Name="CopyDLLToPlugins" AfterTargets="Build">
+		<Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="C:\Users\Dk\Desktop\Modding among us\BepInEx\plugins" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="false" />
+	</Target>
 </Project>
