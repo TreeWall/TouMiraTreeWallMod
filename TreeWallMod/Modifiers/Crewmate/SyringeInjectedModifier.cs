@@ -3,8 +3,10 @@ using MiraAPI.Modifiers;
 using MiraAPI.Roles;
 using System.Collections.Generic;
 using System.Linq;
+using TownOfUs.Interfaces;
 using TownOfUs.Modifiers.Game.Assailant;
 using TownOfUs.Networking;
+using TownOfUs.Roles.Crewmate;
 using TownOfUs.Roles.Impostor;
 using TreeWallMod.Modules;
 using TreeWallMod.Options.Roles.Crewmate;
@@ -70,7 +72,7 @@ namespace TreeWallMod.Modifiers.Crewmate
                     }
                     else if (random < OptionGroupSingleton<SyringeOptions>.Instance.CrewmateChangeTraitor.Value + OptionGroupSingleton<SyringeOptions>.Instance.CrewmateDeath.Value)
                     {
-                        if (AliveCrew < OptionGroupSingleton<SyringeOptions>.Instance.MinCrewForTraitor)
+                        if (AliveCrew < OptionGroupSingleton<SyringeOptions>.Instance.MinCrewForTraitor || (Player.Data.Role is ILoyalCrewmate loyalCrew && !loyalCrew.CanBeTraitor))
                         {
                             if (OptionGroupSingleton<SyringeOptions>.Instance.syringeTraitorFail == SyringeTraitorFail.BothSyringeAndTargetDie)
                             {

@@ -16,5 +16,8 @@ namespace TreeWallMod.Options.Roles.Crewmate
         [ModdedToggleOption("Wrong guess kills pyschic")]
         public bool WrongGuessToggle { get; set; } = true;
 
+        [ModdedToggleOption("Psychic can use Vitals")]
+        public bool UseVitals { get; set; } = false;
+
     }
 }
