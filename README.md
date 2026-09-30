@@ -51,7 +51,7 @@ Note: This role can never become [Traitor](https://au-avengers.github.io/docs.to
 
 
 
-The Psychic is a Crewmate Killing role that can guess a player who has killed in the past 15 seconds, if their guess is correct, the player guessed dies, if it the guess is incorrect, the Psychic dies.
+The Psychic is a Crewmate Killing role that can guess a player who has killed in the past 15 seconds, if their guess is correct, the player guessed dies, if it the guess is incorrect, the Psychic dies. It cannot use Vitals (can be changed by host).
 
 The Psychic can guess any Killer, even Crewmates.
 
