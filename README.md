@@ -61,3 +61,6 @@ An [Among Us](https://store.steampowered.com/app/945360/Among_Us/) mod that adds
 
 ## Idea Credits
 
+* Baccal (@real\_12935) - Marksman
+* Mr Alen (@mr\_alen2504) - Syringe, Headless
+
