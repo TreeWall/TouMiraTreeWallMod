@@ -69,7 +69,7 @@ The Marksman is a Neutral Killing role that can Discover hints about a player's 
 * Smokebomb: Activate a Smokebomb and blind everyone in it.
 * Warp: Mark a player to teleport to them at any time in the game. Can only be used once per round and resets every round.
 * Vanish: Turn mostly invisible. Cannot kill in this state.
-* Dismantle: Completely disable player's abilities and movement while also blinding them. Can only be used once and lasts one round, does not work in the final 5.
+* Dismantle: Completely disable player's abilities and movement while also blinding them. Can only be used once and lasts one round, the button does not work or show up in the final 5.
 * Supressor: When it guesses successfully, it's target does not go under the meeting death animation and instantly skips. Their vote will not count.
 * Dualscover: Can Discover 2 players in one round
 
