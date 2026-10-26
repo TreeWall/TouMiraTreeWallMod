@@ -32,6 +32,13 @@ namespace TreeWallMod
     false;
 #endif
 
+        public static bool IsBetaBuild =>
+#if IS_BETA
+    true;
+#else
+    false;
+#endif
+
         public Harmony Harmony { get; } = new(Id);
         public ConfigFile GetConfigFile() => Config;
 
@@ -40,7 +47,7 @@ namespace TreeWallMod
             Harmony.PatchAll();
 
             MiraLocaleManager.Register(Id);
-            ReactorCredits.Register<TreeWallModPlugin>(ReactorCredits.AlwaysShow);
+            ReactorCredits.Register("TreeWall Mod", Version, IsDevBuild || IsBetaBuild, ReactorCredits.AlwaysShow);
 
             if (IsDevBuild)
             {
