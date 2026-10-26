@@ -7,10 +7,18 @@
 		<AssemblyName>TreeWallMod</AssemblyName>
 		<RootNamespace>TreeWallMod</RootNamespace>
 		<Nullable>enable</Nullable>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 		<Configurations>Release;Debug;</Configurations>
+		<IsBetaBuild>false</IsBetaBuild>
+		<BetaSuffix>1</BetaSuffix>
+		<DefineConstants Condition="'$(IsBetaBuild)' == 'true'">$(DefineConstants);IS_BETA</DefineConstants>
 
 		<VersionPrefix>1.0.1</VersionPrefix>
 		<VersionSuffix Condition="'$(Configuration)' == 'Debug'">dev</VersionSuffix>
+		<VersionSuffix Condition="'$(IsBetaBuild)' == 'true'">beta-$(BetaSuffix)</VersionSuffix>
+		<Version>$(VersionPrefix)-$(VersionSuffix)</Version>
+
 		<!-- TreeWall -->
 	</PropertyGroup>
 
