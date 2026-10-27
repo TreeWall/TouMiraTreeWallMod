@@ -21,7 +21,7 @@ An [Among Us](https://store.steampowered.com/app/945360/Among_Us/) mod that adds
 
 
 
-The Runner is a Crewmate Protective role that cannot be killed while they are running in their Caffeinated state (can be changed from the options).
+The Runner is a Crewmate Protective role that cannot be killed while they are running (for at least 1 second) in their Caffeinated state (can be changed from the options).
 
 This Role cannot be guessed.
 
@@ -129,6 +129,7 @@ You can stretch.
 
 |Game Version|Mod Version|Town Of Us: Mira|Download Link|
 |-|-|-|-|
+|19.0.x|1.0.1-beta-1|1.7.9-beta1|[v1.0.1-beta-1](https://github.com/TreeWall/TouMiraTreeWallMod/releases/tag/v1.0.1-beta-1)|
 |17.4|1.0.0|1.7.1+|[v1.0.0](https://github.com/TreeWall/TouMiraTreeWallMod/releases/tag/v1.0.0)|
 
 
